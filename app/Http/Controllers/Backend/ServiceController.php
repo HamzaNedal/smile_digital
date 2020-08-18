@@ -54,7 +54,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateServiceRequest $request)
     {
         $input = $request->except(['_method', '_token']);
         $service =  Service::create();
@@ -71,11 +71,7 @@ class ServiceController extends Controller
                 'description' => $value['description'],
             ]);
         }
-
-
-
-
-        return redirect()->route('admin.service.index')->with('success', 'The Service has been added successfully');
+        return redirect()->route('admin.service.index')->with('success', 'تم إضافة الخدمة بنجاح');
     }
 
     /**
@@ -109,7 +105,7 @@ class ServiceController extends Controller
      * @param  \App\Service  $Service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateServiceRequest $request, $id)
     {
         $id = (int) $id;
         $input = $request->except(['_token', '_method']);
@@ -124,7 +120,7 @@ class ServiceController extends Controller
                 'description' => $value['description'],
             ]);
         }
-        return redirect()->route('admin.service.index')->with('success', 'The Service has been updated successfully');
+        return redirect()->route('admin.service.index')->with('success', 'تم تعديل بيانات الخدمة بنجاح');
     }
 
     /**
@@ -137,8 +133,9 @@ class ServiceController extends Controller
     {
         $id = (int) $id;
         $service = Service::findOrFail($id);
+        $service->translation()->delete();
         Service::destroy($id);
-        return redirect()->back()->with('success', 'The Service has been deleted successfully');
+        return redirect()->back()->with('success', 'تم حذف الخدمة بنجاح');
     }
 
 

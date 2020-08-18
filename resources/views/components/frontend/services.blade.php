@@ -1,12 +1,13 @@
-@empty(!$servicesCategories->toArray()) 
-    <!-- Our Servise -->
+@if($servicesCategories->isNotEmpty()) 
+
+<!-- Our Servise -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">{{ __('home.Our_Services') }}</h2>
 
             <div class="row mt-5 text-center">
                 @foreach ($servicesCategories as $serCat)
-                {{-- @dd($serCat->parent) --}}
+                @if($serCat->translation->isNotEmpty())
                 <div class="col-md-4">
                     <div class="services-containt wow zoomIn">
                         <div class="services-img">
@@ -22,9 +23,11 @@
                         </ul>
                     </div>
                 </div>
+                @endif
+
                 @endforeach
 
             </div>
         </div>
     </section>
-@endempty
+@endif

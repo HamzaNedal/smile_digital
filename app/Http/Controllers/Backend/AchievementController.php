@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateAchievementRequest;
+use App\Http\Requests\UpdateAchievementRequest;
 use App\Models\Achievement;
 use App\Models\Achievements_Translation;
 use App\Services\ImageService;
-use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 class AchievementController extends Controller
 {
@@ -49,7 +50,7 @@ class AchievementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageService $imageService)
+    public function store(CreateAchievementRequest $request,ImageService $imageService)
     {
         $input = $request->except(['_method', '_token']);
         if (request()->hasfile('image')) {
@@ -96,13 +97,11 @@ class AchievementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id,ImageService $imageService)
+    public function update(UpdateAchievementRequest $request,  $id,ImageService $imageService)
     {
         $id = (int) $id;
         Achievement::findOrFail($request->id);
         $input = $request->except(['_method', '_token']);
-       
-
         if (request()->hasfile('image')) {
             $input['image'] =  $imageService->upload($request->image,'images');
             Achievement::where('id',$id)->update(['image'=>$input['image']]);
@@ -125,7 +124,8 @@ class AchievementController extends Controller
     public function destroy($id)
     {
         $id =(int) $id;
-        Achievement::findOrFail($id);
+        $achievement = Achievement::findOrFail($id);
+        $achievement->translation()->delete();
         Achievement::destroy($id);
         return redirect()->back()->with('success', 'تم ازالة الانجاز بنجاح');
     }

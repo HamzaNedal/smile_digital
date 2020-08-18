@@ -36,8 +36,10 @@ class CategoryObserver
      */
     public function deleted(ServiceCategory $serviceCategory)
     {
-        $serviceCategory->translation[0]->translation[0]->parent->translation()->delete();
-        $serviceCategory->translation[0]->translation[0]->parent()->delete();
+        if($serviceCategory->translation[0]->translation->isNotEmpty()){
+            $serviceCategory->translation[0]->translation[0]->parent->translation()->delete();
+            $serviceCategory->translation[0]->translation[0]->parent()->delete();
+        }
         $serviceCategory->translation()->delete();
     }
 

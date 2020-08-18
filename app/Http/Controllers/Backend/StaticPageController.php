@@ -6,6 +6,9 @@ use App\Models\StaticPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateAboutUsRequest;
+use App\Http\Requests\UpdateStaticPageCompanyRequest;
+use App\Http\Requests\UpdateStaticPageOrderRequest;
+use App\Http\Requests\UpdateStaticPageRequest;
 use App\Models\Static_Page_Translation;
 use App\Services\ImageService;
 use App\Services\ModelServices;
@@ -44,7 +47,7 @@ class StaticPageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageService $imageService)
+    public function store(UpdateStaticPageRequest $request,ImageService $imageService)
     {
         $input = $request->all();
         if (request()->hasfile('profile')) {
@@ -81,7 +84,6 @@ class StaticPageController extends Controller
     public function updateAboutUs(UpdateAboutUsRequest $request)
     {
         $input = $request->except('_token');
-        // unset($input['_token']);
         $fk_static_pages = StaticPage::where(['key'=>'about_us'])->first()->id;
         foreach ($input as $key => $value) {
             foreach ($value as $key2 => $val) {
@@ -102,10 +104,9 @@ class StaticPageController extends Controller
         }
         return redirect(asset('files/'.$profile->value));
     }
-    public function about_company(Request $request,ImageService $imageService,ModelServices $modelServices)
+    public function about_company(UpdateStaticPageCompanyRequest $request,ImageService $imageService,ModelServices $modelServices)
     {
-        $input = $request->all();
-        unset($input['_token']);
+        $input = $request->except('_token');
         if (request()->hasfile('image')) {
             $input['image'] =  $imageService->upload($input['image'],'files');
             StaticPage::where(['key'=>'company'])->update(['file'=>$input['image']]);
@@ -115,10 +116,9 @@ class StaticPageController extends Controller
         $modelServices->update($input,$fk_static_pages);
         return redirect()->route('admin.static_page.index')->with('success', 'تم تحديث البيانات بنجاح');
     }
-    public function order(Request $request,ModelServices $modelServices)
+    public function order(UpdateStaticPageOrderRequest $request,ModelServices $modelServices)
     {
-        $input = $request->all();
-        unset($input['_token']);
+        $input = $request->except('_token');
         StaticPage::where(['key'=>'order'])->update(['value'=>$input['link']]);
         unset($input['link']);
         $fk_static_pages = StaticPage::where(['key'=>'order'])->first()->id;

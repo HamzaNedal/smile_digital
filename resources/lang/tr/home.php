@@ -25,6 +25,7 @@ return [
     'our_mission' => 'Görevimiz',
     'who_are_smile_digital' => 'Kim Smile Digital',
     'message_toastr'=>'İsteğiniz başarıyla gönderildi',
+    'success'=>'başarı',
 
 
 ];

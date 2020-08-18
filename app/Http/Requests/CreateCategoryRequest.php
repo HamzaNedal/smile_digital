@@ -23,8 +23,11 @@ class CreateCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return  [
-            'name' => 'required|string',
+        return [
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+            'image'=>'required|image',
         ];
     }
 }

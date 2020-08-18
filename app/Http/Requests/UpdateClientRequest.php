@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateSectorRequest extends FormRequest
+class UpdateClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,12 @@ class UpdateSectorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+            'image'=>'sometimes|image',
+            'link'=>'required|url',
+        
         ];
     }
 }

@@ -25,5 +25,7 @@ return [
     'our_mission' => 'Our Mission',
     'who_are_smile_digital' => 'Who Are Smile Digital',
     'message_toastr'=>'Your request has been sent successfully',
+    'success'=>'Success',
+
 
 ];

@@ -24,8 +24,16 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+
+            'ar.description'=>'required|string',
+            'en.description'=>'required|string',
+            'tr.description'=>'required|string',
+
+            'category_id'=>'required|integer',
+            
         ];
     }
 }

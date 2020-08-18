@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCompanyRequest extends FormRequest
+class UpdateAchievementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,12 @@ class CreateCompanyRequest extends FormRequest
      */
     public function rules()
     {
-        return[
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'link' => 'required|url',
-            'image' => 'required|image',
+        return [
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+            'image'=>'sometimes|image',
+            'link'=>'required|url',
         ];
     }
 }

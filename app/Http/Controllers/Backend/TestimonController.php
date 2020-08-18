@@ -126,7 +126,8 @@ class TestimonController extends Controller
     public function destroy($id)
     {
         $id =(int) $id;
-        Testimon::findOrFail($id);
+        $testimon = Testimon::findOrFail($id);
+        $testimon->translation()->delete();
         Testimon::destroy($id);
         return redirect()->back()->with('success', 'تم الازالة بنجاح');
     }

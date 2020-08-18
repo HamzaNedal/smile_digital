@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use App\Models\Client_Translation;
 use App\Services\ImageService;
@@ -51,7 +53,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageService $imageService)
+    public function store(CreateCategoryRequest $request,ImageService $imageService)
     {
         $input = $request->except(['_method', '_token']);
         if (request()->hasfile('image')) {
@@ -84,7 +86,6 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -99,7 +100,7 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id,ImageService $imageService)
+    public function update(UpdateClientRequest $request,  $id,ImageService $imageService)
     {
         $id = (int) $id;
         Client::findOrFail($request->id);
@@ -127,6 +128,7 @@ class ClientController extends Controller
     {
         $id =(int) $id;
         $client = Client::findOrFail($id);
+        $client->translation()->delete();
         Client::destroy($id);
         return redirect()->back()->with('success', 'تم ازالة العميل بنجاح');
     }

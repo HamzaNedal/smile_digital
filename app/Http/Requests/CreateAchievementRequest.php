@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSectorRequest extends FormRequest
+class CreateAchievementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,11 @@ class CreateSectorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+            'image'=>'required|image',
+            'link'=>'required|url',
         ];
     }
 }

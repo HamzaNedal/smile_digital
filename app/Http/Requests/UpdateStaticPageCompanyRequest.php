@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePartnaerRequest extends FormRequest
+class UpdateStaticPageCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,17 @@ class CreatePartnaerRequest extends FormRequest
      */
     public function rules()
     {
+        // dd(request()->all());
         return [
-            'title' => 'required|string',
-            'link' => 'required|url',
-            'image' => 'required|image',
+            'ar.title'=>'required|string',
+            'en.title'=>'required|string',
+            'tr.title'=>'required|string',
+
+            'ar.description'=>'required|string',
+            'en.description'=>'required|string',
+            'tr.description'=>'required|string',
+
+            'image'=>'sometimes|file',
         ];
     }
 }

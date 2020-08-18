@@ -25,7 +25,7 @@
                             <a href="{{ $staticPages->where('key','youtube')->first()->value ?? '#' }}"><i class="fa fa-youtube"></i></a>
                         </li>
                         <li>
-                            <a href="{{ $staticPages->where('key','linkedin')->first()->value ?? '#' }}"><i class="fa fa-linkedin"></i></a>
+                            <a href="{{ $staticPages->where('key','linkedIn')->first()->value ?? '#' }}"><i class="fa fa-linkedin"></i></a>
                         </li>
 
                     </ul>

@@ -9,6 +9,7 @@ use App\Models\ContactUs;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\Testimon;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -56,8 +57,9 @@ class HomeController extends Controller
 
     public function storeContactUs(CreateContactUsRequest $request)
     {
+        App::setLocale(session('lang'));
         ContactUs::Create($request->except('_token'));
-        toastr()->success(__('home.message_toastr'), 'Success');
+        toastr()->success(__('home.message_toastr'), __('home.success'));
         return back();
     }
 }

@@ -25,6 +25,7 @@ return [
     'our_mission' => 'هدفنا',
     'who_are_smile_digital' => 'من هي smile digital',
     'message_toastr'=>'تم ارسال طلبك بنجاح',
+    'success'=>'تهانينا',
 
 
 ];

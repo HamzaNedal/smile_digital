@@ -52,7 +52,7 @@
   <div class="form-group" style="padding: 1rem">
     <label for="link">الرابط</label>
     
-    <input type="text" class="form-control" name="link" id="link" @isset($page_static)value="{{  $page_static->where('key','order')->first()->value }}" @else value="" @endisset >
+    <input type="text" class="form-control" name="link" id="link" @isset($achievement)value="{{  $achievement->link }}" @else value="" @endisset >
  </div>
 </div>
   <!-- /.card-body -->

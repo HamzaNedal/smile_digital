@@ -50,7 +50,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageService $imageService)
+    public function store(CreateCategoryRequest $request,ImageService $imageService)
     {
         $input = $request->except(['_method', '_token']);
         if (request()->hasfile('image')) {
@@ -66,7 +66,7 @@ class CategoryController extends Controller
                 'name' => $value['title'],
             ]);
         }
-        return redirect()->route('admin.category.index')->with('success', 'تم اضافة الفسم بنجاح');
+        return redirect()->route('admin.category.index')->with('success', 'تم اضافة القسم بنجاح');
     }
 
     /**
@@ -98,7 +98,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id,ImageService $imageService)
+    public function update(UpdateCategoryRequest $request,  $id,ImageService $imageService)
     {
         $id = (int) $id;
         ServiceCategory::findOrFail($request->id);
