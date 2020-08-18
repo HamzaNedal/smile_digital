@@ -4,8 +4,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
 
+    @if (session('lang') == 'ar')
+        <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap-rtl.min.css">
+    @else
+     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css">
+    @endif
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.theme.default.min.css">
