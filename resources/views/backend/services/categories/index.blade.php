@@ -45,6 +45,32 @@
           });
       });
   </script>
+      <script>
+        $(document).on('click','#update',function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+            $.ajax({
+            type: "post",
+            url: "{{ route('admin.category.services.update') }}",
+            data:{
+                'new_category_id':$('#new_category_id').val(),
+                'old_category_id':$('#old_category_id').val(),
+                '_method': "put"
+            },
+            dataType: "json",
+            success: function (response) {
+                if(response.message=='success'){
+                    location.reload();
+                }
+            }
+        });
+        })
+
+    </script>
 @endpush
+
 @endsection
 

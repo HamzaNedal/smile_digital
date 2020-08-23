@@ -8,6 +8,7 @@ use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Service_Categories_Translation;
 use App\Models\ServiceCategory;
+use App\Models\Services_Translation;
 use App\Services\ImageService;
 use Yajra\Datatables\Datatables;
 
@@ -19,7 +20,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         return view('backend.services.categories.index');
     }
 
@@ -27,8 +28,8 @@ class CategoryController extends Controller
         $categories = Service_Categories_Translation::where('lang_code','ar')->get();
         $route = 'category';
         $fk = 'fk_service_categories';
-         return Datatables::of($categories)->addColumn('actions', function ($data) use($route,$fk) {
-             return view('backend.datatables.actions',compact('data','fk','route'));
+         return Datatables::of($categories)->addColumn('actions', function ($data) use($route,$categories,$fk) {
+             return view('backend.datatables.actions',compact('data','categories','fk','route'));
          })->addColumn('image', function ($data) {
             return '<img src="'.asset('images/'. $data->parent->image).'"  style="width: 60px;height:60px">';
         })->rawColumns(['actions','image'])
@@ -130,5 +131,24 @@ class CategoryController extends Controller
         ServiceCategory::findOrFail($id);
         ServiceCategory::destroy($id);
         return redirect()->back()->with('success', 'تم ازالة القسم بنجاح');
+    }
+
+
+    public function updateCategoryForServices()
+    {
+        //new_category_id: 13 Service_Categories_Translation 
+        //old_category_id: 5  ServiceCategory
+        $new_categories = Service_Categories_Translation::findOrFail(request()->new_category_id)->parent->translation; // all new cateogries
+        $old_categories = ServiceCategory::findOrFail(request()->old_category_id)->translation;// all old categories
+        foreach ($old_categories as $key => $category) {
+            Services_Translation::where(['fk_category_translation'=> $category->id])->update([
+                'fk_category_translation' => $new_categories[$key]->id,
+            ]);
+        }
+        $this->destroy(request()->old_category_id);
+        return response()->json([
+            'message'=>'success',
+            'status'=>200
+        ]);
     }
 }

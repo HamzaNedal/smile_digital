@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::put('/category/{id}', [CategoryController::class,'update'])->name('admin.category.update');
   Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('admin.category.edit');
   Route::delete('/category/{id}', [CategoryController::class,'destroy'])->name('admin.category.destroy');
+  Route::put('/category/services/update', [CategoryController::class,'updateCategoryForServices'])->name('admin.category.services.update');
   //end category
 
   //Achievement
