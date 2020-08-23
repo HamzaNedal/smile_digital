@@ -28,8 +28,7 @@ Route::get('/download', [StaticPageController::class,'download'])->name('profile
 Route::post('/contact-us', [HomeController::class,'storeContactUs'])->name('storeContactUs');
 Route::get('/language/{lang}', [HomeController::class, 'language'])->name('lang');
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('localization');
-Auth::routes(['register' => false]);
-
+Auth::routes(['register' => false, 'password. request' => false, 'password. reset' => false]);
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function () {
   
   Route::get('/home', [HomeController::class, 'dashboard'])->name('admin.home');
