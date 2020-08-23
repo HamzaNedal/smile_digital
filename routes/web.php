@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\StaticPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\TestimonController;
 use App\Models\StaticPage;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -29,6 +30,17 @@ Route::post('/contact-us', [HomeController::class,'storeContactUs'])->name('stor
 Route::get('/language/{lang}', [HomeController::class, 'language'])->name('lang');
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('localization');
 Auth::routes(['register' => false, 'password. request' => false, 'password. reset' => false]);
+// Route::get("clear-cache", function() {
+//   Artisan::call('cache:clear');
+//   Artisan::call('route:clear');
+//   Artisan::call('config:clear');
+//   Artisan::call('view:clear');
+//   });
+//   Route::get('/updateapp', function()
+// {
+//     exec('composer dump-autoload');
+//     echo 'dump-autoload complete';
+// });
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function () {
   
   Route::get('/home', [HomeController::class, 'dashboard'])->name('admin.home');
@@ -53,9 +65,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::get('/service/{id}/edit', [ServiceController::class, 'edit'])->name('admin.service.edit');
   Route::put('/service/{id}', [ServiceController::class, 'update'])->name('admin.service.update');
   Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('admin.service.destroy');
-  Route::get('/service_requests', [ServiceController::class, 'serviceResquests'])->name('admin.service_requests.index');
-  Route::get('/service_requests/datatable', [ServiceController::class, 'datatableServiceResquests'])->name('admin.service_requests.datatable');
-  Route::delete('/service_requests/{id}', [ServiceController::class, 'destroyserviceResquests'])->name('admin.service_requests.destroy');
+  // Route::get('/service_requests', [ServiceController::class, 'serviceResquests'])->name('admin.service_requests.index');
+  // Route::get('/service_requests/datatable', [ServiceController::class, 'datatableServiceResquests'])->name('admin.service_requests.datatable');
+  // Route::delete('/service_requests/{id}', [ServiceController::class, 'destroyserviceResquests'])->name('admin.service_requests.destroy');
   //end services
 
   //Category
@@ -107,4 +119,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::get('/about-us', [StaticPageController::class, 'showAboutUs'])->name('admin.about_us.show');
   Route::post('/about-us', [StaticPageController::class, 'updateAboutUs'])->name('admin.about_us.store');
   //end about us
+
 });

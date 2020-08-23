@@ -1,6 +1,6 @@
 $('.owl-carousel.owl-carousel-about').owlCarousel({
     rtl: true,
-    loop: true,
+    loop: false,
     margin: 10,
     nav: false,
     autoplay: true,
@@ -21,7 +21,7 @@ $('.owl-carousel.owl-carousel-about').owlCarousel({
 
 $('.owl-carousel.owl-carousel-testimonies').owlCarousel({
     rtl: true,
-    loop: true,
+    loop: false,
     margin: 10,
     nav: false,
     autoplay: true,
@@ -43,8 +43,8 @@ $('.owl-carousel.owl-carousel-testimonies').owlCarousel({
 
 $('.owl-carousel.owl-carousel-clients').owlCarousel({
     rtl: true,
-    loop: true,
-    margin: 10,
+    loop: false,
+    margin: 0,
     nav: false,
     autoplay: true,
     autoplayTimeout: 2000,

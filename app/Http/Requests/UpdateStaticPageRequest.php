@@ -24,15 +24,15 @@ class UpdateStaticPageRequest extends FormRequest
     public function rules()
     {
         return [
-            'facebook'=>'required|string',
-            'behance'=>'required|string',
-            'twitter'=>'required|string',
-            'instagram'=>'required|string',
-            'youtube'=>'required|string',
-            'linkedin'=>'required|string',
-            'whats_app'=>'required|numeric',
-            'phone'=>'required|numeric',
-            'address'=>'required|string',
+            'facebook'=>'nullable|string',
+            'behance'=>'nullable|string',
+            'twitter'=>'nullable|string',
+            'instagram'=>'nullable|string',
+            'youtube'=>'nullable|string',
+            'linkedin'=>'nullable|string',
+            'whats_app'=>'nullable|numeric',
+            'phone'=>'nullable|numeric',
+            'address'=>'nullable|string',
             'profile'=>'sometimes|file',
         ];
     }

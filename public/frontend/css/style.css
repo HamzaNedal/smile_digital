@@ -583,7 +583,21 @@ ol {
 .clients .owl-carousel-clients {
   margin-top: 50px;
 }
-
+.clients-img{
+  display: flex;
+  width: 393px;
+  height: 333px;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.164);
+}
+.clients-img img{
+  max-width: 200px;
+    height: auto;
+    max-height: 257px;
+    object-fit: cover;
+}
 .contact-us {
   padding: 70px 0;
 }
@@ -761,8 +775,8 @@ ol {
   .about .about-img .idia {
     width: 130px;
     position: absolute;
-    left: 33%;
-    top: 41px;
+    left: 25%;
+    top: 55px;
   }
   .about .about-containt p {
     margin-top: 20px;
@@ -770,7 +784,7 @@ ol {
     line-height: 19px;
   }
   .about .owl-theme .owl-dots {
-    left: -185px;
+    left: 0px;
   }
   .testimonies .testimonies-slider .owl-carousel-testimonies .item p {
     font-size: 20px;
@@ -892,4 +906,6 @@ ol {
     color: #a10b62 !important;
   }
 }
+
+
 /*# sourceMappingURL=style.css.map */

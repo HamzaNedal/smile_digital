@@ -32,7 +32,7 @@ class UpdateStaticPageOrderRequest extends FormRequest
             'en.description'=>'required|string',
             'tr.description'=>'required|string',
 
-            'link'=>'required|url',
+            'link'=>'nullable|url',
         ];
     }
 }

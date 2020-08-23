@@ -58,6 +58,7 @@ class AchievementController extends Controller
         }
         $achievement =  Achievement::create(['image'=>$input['image'],'link'=>$input['link']]);
         unset($input['image']);
+        unset($input['link']);
         $id =  $achievement->id;
         foreach ($input as $key => $value) {
             Achievements_Translation::create([

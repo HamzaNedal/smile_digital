@@ -44,7 +44,7 @@ $('.owl-carousel.owl-carousel-testimonies').owlCarousel({
 $('.owl-carousel.owl-carousel-clients').owlCarousel({
     rtl: false,
     loop: false,
-    margin: 10,
+    margin: 0,
     nav: false,
     autoplay: true,
     autoplayTimeout: 2000,

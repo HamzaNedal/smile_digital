@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\frontend;
+namespace App\View\Components\Frontend;
 
 use App\Models\Client;
 use App\Models\Client_Translation;

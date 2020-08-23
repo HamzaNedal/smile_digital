@@ -7,7 +7,9 @@
                 <div class="hero-containt">
                     <h2>{{ $staticPages->name }}</h2>
                     <p>{{ $staticPages->value }}</p>
-                    <a href="{{ $staticPages->parent->value }}" class="btn btn-hero">Make Your Order</a>
+                    @if ($staticPages->parent->value)
+                      <a href="{{ $staticPages->parent->value }}" class="btn btn-hero">{{ __('home.make_your_order') }}</a>
+                    @endif
                 </div>
             </div>
             <div class="col-md-6  wow slideInRight">

@@ -26,6 +26,7 @@ return [
     'who_are_smile_digital' => 'من هي smile digital',
     'message_toastr'=>'تم ارسال طلبك بنجاح',
     'success'=>'تهانينا',
+    'make_your_order'=>'اطب خدمة',
 
 
 ];

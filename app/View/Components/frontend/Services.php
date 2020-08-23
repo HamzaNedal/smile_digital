@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\frontend;
+namespace App\View\Components\Frontend;
 
 use App\Models\Service_Categories_Translation;
 use Illuminate\View\Component;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\frontend;
+namespace App\View\Components\Frontend;
 
 use App\Models\Testimon_Translation;
 use Illuminate\View\Component;

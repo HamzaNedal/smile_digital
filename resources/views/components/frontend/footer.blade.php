@@ -7,15 +7,22 @@
                 </div>
                 <div class="col-md-4">
                     <ul>
+                        @if ($staticPages->where('key','address')->first()->value)
                         <li>
                             <i class="fa fa-map-marker"></i>{{ $staticPages->where('key','address')->first()->value }}
                         </li>
+                        
+                        @endif
+                        @if ($staticPages->where('key','whats_app')->first()->value)
                         <li>
                             <i class="fa fa-whatsapp "></i> {{ $staticPages->where('key','whats_app')->first()->value }}
                         </li>
+                        @endif
+                        @if ($staticPages->where('key','phone')->first()->value)
                         <li>
                             <i class="fa fa-phone "></i> {{ $staticPages->where('key','phone')->first()->value }}
                         </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="col-md-4 ">

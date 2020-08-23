@@ -98,6 +98,10 @@ ol {
 
 .navbar .navbar-nav .nav-item .nav-link {
   font-weight: bold;
+  padding: 0 15px 0px 15px;
+    line-height: 3.5;
+    font-size: 15px;
+    margin-left: 10px;
 }
 
 .navbar .navbar-nav .nav-item:hover .nav-link {
@@ -113,7 +117,10 @@ ol {
   color: #FFF;
   font-family: 'Fira Sans', sans-serif;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 0 12px 0px 12px;
+  line-height: 3.5;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
 .navbar .dropdown .nav-link {
@@ -289,7 +296,7 @@ ol {
   width: 57%;
   height: 1px;
   background-color: #FFF;
-  left: 142px;
+  left: 109px;
   top: 50%;
 }
 
@@ -406,6 +413,7 @@ ol {
   height: 33px;
   background-color: #a10b62;
   margin-right: 20px;
+  margin-left: 9px;
   color: #FFF;
   border-radius: 50%;
   line-height: 33px;
@@ -577,7 +585,21 @@ ol {
 .clients .owl-carousel-clients {
   margin-top: 50px;
 }
-
+.clients-img{
+  display: flex;
+  width: 393px;
+  height: 333px;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.164);
+}
+.clients-img img{
+  max-width: 200px;
+    height: auto;
+    max-height: 257px;
+    object-fit: cover;
+}
 .contact-us {
   padding: 70px 0;
 }
@@ -755,8 +777,8 @@ ol {
   .about .about-img .idia {
     width: 130px;
     position: absolute;
-    left: 33%;
-    top: 41px;
+    left: 25%;
+    top: 55px;
   }
   .about .about-containt p {
     margin-top: 20px;
@@ -764,7 +786,7 @@ ol {
     line-height: 19px;
   }
   .about .owl-theme .owl-dots {
-    left: -185px;
+    left: 0;
   }
   .testimonies .testimonies-slider .owl-carousel-testimonies .item p {
     font-size: 20px;
@@ -827,8 +849,9 @@ ol {
     z-index: 100;
   }
   .navbar .navbar-nav .nav-item .nav-link {
-    font-weight: bold;
-    font-size: 16px;
+   /* font-weight: bold; */
+    font-size: 20px;
+    padding-left: 23px;
   }
   .change {
     right: 0;
@@ -886,4 +909,3 @@ ol {
     color: #a10b62 !important;
   }
 }
-/*# sourceMappingURL=style.css.map */

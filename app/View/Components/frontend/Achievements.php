@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\frontend;
+namespace App\View\Components\Frontend;
 
 use App\Models\Achievement;
 use App\Models\Achievements_Translation;

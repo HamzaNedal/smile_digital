@@ -67,6 +67,7 @@ input.remove
 @endpush
     <div class="content">
         <x-backend.message />     
+        <x-backend.errors />     
       <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="margin-left: 0;

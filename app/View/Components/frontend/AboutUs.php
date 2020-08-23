@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\frontend;
+namespace App\View\Components\Frontend;
 
 use App\Models\Static_Page_Translation;
 use App\Models\StaticPage;
