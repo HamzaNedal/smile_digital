@@ -42,7 +42,7 @@ class HomeController extends Controller
         $achievements = count(Achievement::get()->toArray());
         $testimon = count(Testimon::get()->toArray());
         return view('backend.home',compact('testimon','categories','services','contactus','clients','achievements','testimon'));
-        return view('backend.home');
+        // return view('backend.home');
 
     }
 

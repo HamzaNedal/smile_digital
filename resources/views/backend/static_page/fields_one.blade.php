@@ -11,34 +11,34 @@
      <x-slot name='title_placeholder'>ادخل العنوان</x-slot>
      <x-slot name='desc_placeholder'>ادخل الوصف</x-slot>
      @isset($page_static)
-     <x-slot name='title_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','ar')->first()->name }}</x-slot>
-     <x-slot name='desc_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','ar')->first()->value }}</x-slot>
+     <x-slot name='title_data'>{{ $page_static->where('key','company_ar')->first()->name }}</x-slot>
+     <x-slot name='desc_data'>{{ $page_static->where('key','company_ar')->first()->value }}</x-slot>
     @endisset
    </x-backend.service.forms.form>
-   <x-backend.services.forms.file fileName='فيديو' attrNameFile='ar[file]' />
+   <x-backend.services.forms.file fileName='الفيديو بالعربي' attrNameFile='ar[file]' />
   </div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> 
     <x-backend.services.forms.form name="en" title='Title' desc='Description'>
     <x-slot name='title_placeholder'>Enter Title</x-slot>
     <x-slot name='desc_placeholder'>Enter Description</x-slot>
     @isset($page_static)
-      <x-slot name='title_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','en')->first()->name }}</x-slot>
-      <x-slot name='desc_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','en')->first()->value }}</x-slot>
+    <x-slot name='title_data'>{{ $page_static->where('key','company_en')->first()->name }}</x-slot>
+    <x-slot name='desc_data'>{{ $page_static->where('key','company_en')->first()->value }}</x-slot>
     @endisset 
     
   </x-backend.service.forms.form>
-  <x-backend.services.forms.file fileName='video' attrNameFile='en[file]' />
+  <x-backend.services.forms.file fileName='video english' attrNameFile='en[file]' />
  </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
     <x-backend.services.forms.form name="tr" title='Başlık' desc='tanım'>
       <x-slot name='title_placeholder'>Adresi girin</x-slot>
       <x-slot name='desc_placeholder'>Açıklamayı girin</x-slot>
       @isset($page_static)
-        <x-slot name='title_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','tr')->first()->name }}</x-slot>
-        <x-slot name='desc_data'>{{ $page_static->where('key','company')->first()->translation->where('lang_code','tr')->first()->value }}</x-slot>
+      <x-slot name='title_data'>{{ $page_static->where('key','company_tr')->first()->name }}</x-slot>
+      <x-slot name='desc_data'>{{ $page_static->where('key','company_tr')->first()->value }}</x-slot>
       @endisset 
     </x-backend.service.forms.form>
-    <x-backend.services.forms.file fileName='video' attrNameFile='tr[file]' />
+    <x-backend.services.forms.file fileName='video turkish' attrNameFile='tr[file]' />
   </div>
 
 </div>

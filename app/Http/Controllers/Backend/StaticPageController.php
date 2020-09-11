@@ -143,27 +143,27 @@ class StaticPageController extends Controller
         $input = $request->except('_token');  
         // dd($input);
         foreach ($input as $key => $value) {
-           StaticPage::create([
-               'key'=>'company_'.$key,
-               'name'=>$value['title'],
-               'value'=>$value['description'],
-               'file'=>'15994666335f55ec8921002.mp4',
-           ]);
-        // if(array_key_exists('file',$value)){
-        //     if(file_exists($value['file'])){
-        //         $value['file'] =  $imageService->upload($value['file'],'files');
-        //         StaticPage::where(['key'=>'company_'.$key])->update([
-        //             'name'=>$value['title'],
-        //             'value' => $value['description'],
-        //             'file' => $value['file'],
-        //         ]);
-        //     }
-        // }else{
-        //     StaticPage::where(['key'=>'company_'.$key])->update([
-        //         'name'=>$value['title'],
-        //         'value' => $value['description'],
-        //     ]);
-        // }
+        //    StaticPage::create([
+        //        'key'=>'company_'.$key,
+        //        'name'=>$value['title'],
+        //        'value'=>$value['description'],
+        //        'file'=>'15994666335f55ec8921002.mp4',
+        //    ]);
+        if(array_key_exists('file',$value)){
+            if(file_exists($value['file'])){
+                $value['file'] =  $imageService->upload($value['file'],'files');
+                StaticPage::where(['key'=>'company_'.$key])->update([
+                    'name'=>$value['title'],
+                    'value' => $value['description'],
+                    'file' => $value['file'],
+                ]);
+            }
+        }else{
+            StaticPage::where(['key'=>'company_'.$key])->update([
+                'name'=>$value['title'],
+                'value' => $value['description'],
+            ]);
+        }
        
 
         }

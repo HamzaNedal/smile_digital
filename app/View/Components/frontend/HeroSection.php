@@ -28,6 +28,6 @@ class HeroSection extends Component
     }
     public function staticPages(){
         
-        return StaticPage::where('key','company')->first()->translation->where('lang_code',session('lang'))->first();
+        return StaticPage::where('key','company_'.session('lang'))->first();
      }
 }

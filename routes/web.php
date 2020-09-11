@@ -54,9 +54,9 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   });
 //   Route::get('/updateapp', function()
 // {
-//     // exec('composer install');
+//    exec('composer install');
+//     exec('composer require doctrine/dbal');
 //    exec('composer dump-autoload');
-    
 //     echo 'dump-autoload complete';
 // });
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function () {
