@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Edit Testimony')
+@section('title', 'تعديل بيانات الشهادة')
 
 @section('content')
 

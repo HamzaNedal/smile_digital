@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Add Achievement')
+@section('title', 'إضافة انجاز')
 
 @section('content')
 

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Edit Service')
+@section('title', 'تعديل بانات الخدمة')
 
 @section('content')
 

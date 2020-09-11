@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Home')
+@section('title', 'الرئيسية')
 @section('content')
   
     <!-- Content Header (Page header) -->
