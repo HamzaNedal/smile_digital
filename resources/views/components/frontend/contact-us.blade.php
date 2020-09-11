@@ -1,7 +1,7 @@
     <!-- Contact -->
     <section class="contact-us" id="contact">
         <div class="container">
-            <h2 class="wow flipInX">{{ __('home.Need_Help') }}? {{ __('home.Say_Hello') }}</h2>
+            <h2 class="wow flipInX">{{ __('home.Need_Help') }}<?= session('lang')=='ar' ? '؟' : '?'?> {{ __('home.Say_Hello') }}</h2>
             {{-- <p class="wow lightSpeedIn">Aliquam a augue suscipit, luctus neque purus ipsum neque dolor primis libero tempus, tempor posuere ligula varius impedit enim tempor sapien</p> --}}
             <p class="wow lightSpeedIn"></p>
             <form action="{{ route('storeContactUs') }}" method="post">
