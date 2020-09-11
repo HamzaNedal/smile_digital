@@ -10,7 +10,9 @@
    <x-backend.services.forms.form name="ar" title='العنوان'  desc='الوصف'>
      <x-slot name='title_placeholder'>ادخل العنوان</x-slot>
      <x-slot name='desc_placeholder'>ادخل الوصف</x-slot>
-     @isset($testimon)
+     
+     @isset($testimon->translation[0])
+     {{-- @dd($testimon->translation); --}}
      <x-slot name='title_data'>{{ $testimon->translation[0]->name }}</x-slot>
      <x-slot name='desc_data'>{{ $testimon->translation[0]->description }}</x-slot>
     @endisset
@@ -20,7 +22,7 @@
     <x-backend.services.forms.form name="en" title='Title' desc='Description'>
     <x-slot name='title_placeholder'>Enter Title</x-slot>
     <x-slot name='desc_placeholder'>Enter Description</x-slot>
-    @isset($testimon)
+    @isset($testimon->translation[1])
       <x-slot name='title_data'>{{ $testimon->translation[1]->name }}</x-slot>
       <x-slot name='desc_data'>{{ $testimon->translation[1]->description }}</x-slot>
     @endisset 
@@ -30,7 +32,7 @@
     <x-backend.services.forms.form name="tr" title='Başlık' desc='tanım'>
       <x-slot name='title_placeholder'>Adresi girin</x-slot>
       <x-slot name='desc_placeholder'>Açıklamayı girin</x-slot>
-      @isset($testimon)
+      @isset($testimon->translation[2])
         <x-slot name='title_data'>{{ $testimon->translation[2]->name }}</x-slot>
         <x-slot name='desc_data'>{{ $testimon->translation[2]->description }}</x-slot>
       @endisset 

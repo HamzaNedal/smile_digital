@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\CreateServiceRequest;
+use App\Http\Requests\CreateTestimonyRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Http\Requests\UpdateTestimonyRequest;
 use App\Models\Testimon;
 use App\Models\Testimon_Translation;
 use App\Services\ImageService;
@@ -50,22 +52,24 @@ class TestimonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,ImageService $imageService)
+    public function store(CreateTestimonyRequest $request,ImageService $imageService)
     {
         $input = $request->except(['_method', '_token']);
         if (request()->hasfile('image')) {
             $input['image'] =  $imageService->upload($request->image,'images');
         }
-        $achievement =  Testimon::create(['image'=>$input['image']]);
+        $testimon =  Testimon::create(['image'=>$input['image']]);
         unset($input['image']);
-        $id =  $achievement->id;
+        $id =  $testimon->id;
         foreach ($input as $key => $value) {
-            Testimon_Translation::create([
-                'fk_testimonies' => $id,
-                'lang_code' => $key,
-                'name' => $value['title'],
-                'description' => $value['description'],
-            ]);
+            if  ($value['title'] != null) {
+                Testimon_Translation::create([
+                    'fk_testimonies' => $id,
+                    'lang_code' => $key,
+                    'name' => $value['title'],
+                    'description' => $value['description'],
+                ]);
+            }
         }
         return redirect()->route('admin.testimon.index')->with('success', 'تمت الاضافة بنجاح');
     }
@@ -97,7 +101,7 @@ class TestimonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id,ImageService $imageService)
+    public function update(UpdateTestimonyRequest $request,  $id,ImageService $imageService)
     {
         $id = (int) $id;
         Testimon::findOrFail($request->id);
@@ -110,12 +114,14 @@ class TestimonController extends Controller
         }
 
         foreach ($input as $key => $value) {
-            Testimon_Translation::where(['fk_testimonies'=>$id,'lang_code' => $key])->update([
-                'name' => $value['title'],
-                'description' => $value['description'],
-            ]);
+            if ($value['title'] != null) {
+                Testimon_Translation::where(['fk_testimonies'=>$id,'lang_code' => $key])->update([
+                    'name' => $value['title'],
+                    'description' => $value['description'],
+                ]);
+            }
         }
-        return redirect()->route('admin.achievement.index')->with('success', 'تم تعديل البيانات بنجاح');
+        return redirect()->route('admin.testimon.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 
     /**

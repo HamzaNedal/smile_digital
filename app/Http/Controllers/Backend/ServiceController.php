@@ -33,7 +33,7 @@ class ServiceController extends Controller
         return DataTables::of($services)->addColumn('actions', function ($data) use ($route,$fk) {
             return view('backend.datatables.actions', compact('data','fk', 'route'));
         })->addColumn('category', function ($data) {
-            return $data->category->name;
+            return $data->category->name ?? '';
         })->rawColumns(['actions'])
             ->make(true);
     }

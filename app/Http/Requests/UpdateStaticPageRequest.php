@@ -33,7 +33,9 @@ class UpdateStaticPageRequest extends FormRequest
             'whats_app'=>'nullable|numeric',
             'phone'=>'nullable|numeric',
             'address'=>'nullable|string',
-            'profile'=>'sometimes|file',
+            'profile_ar'=>'sometimes|nullable|file',
+            'profile_en'=>'sometimes|nullable|file',
+            'profile_tr'=>'sometimes|nullable|file',
         ];
     }
 }

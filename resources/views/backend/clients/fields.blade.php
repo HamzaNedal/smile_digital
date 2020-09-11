@@ -9,7 +9,8 @@
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
    <x-backend.services.forms.category_form name="ar" title='الاسم'>
      <x-slot name='title_placeholder'>ادخل الاسم</x-slot>
-     @isset($client)
+  
+     @isset($client->translation[0])
      <x-slot name='title_data'>{{ $client->translation[0]->name }}</x-slot>
     @endisset
    </x-backend.service.forms.category_form>
@@ -17,7 +18,7 @@
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> 
     <x-backend.services.forms.category_form name="en" title='Name' >
     <x-slot name='title_placeholder'>Enter the name</x-slot>
-    @isset($client)
+    @isset($client->translation[1])
       <x-slot name='title_data'>{{ $client->translation[1]->name }}</x-slot>
     @endisset 
   </x-backend.service.forms.category_form>
@@ -25,7 +26,8 @@
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
     <x-backend.services.forms.category_form name="tr" title='isim' >
       <x-slot name='title_placeholder'>Adı girin</x-slot>
-      @isset($client)
+      @isset($client->translation[2])
+
         <x-slot name='title_data'>{{ $client->translation[2]->name }}</x-slot>
       @endisset 
     </x-backend.service.forms.category_form>

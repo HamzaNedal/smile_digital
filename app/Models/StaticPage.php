@@ -9,7 +9,7 @@ class StaticPage extends Model
 {
     use SoftDeletes;
     protected $table = 'static_pages';
-    protected $fillable = ['key','status','file'];
+    protected $fillable = ['key','status','value','file'];
     protected $casts = [
         'created_at'=>'date:Y-m-d h:m:s'
     ];

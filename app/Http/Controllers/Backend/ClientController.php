@@ -116,6 +116,7 @@ class ClientController extends Controller
                 'name' => $value['title'],
             ]);
         }
+   
         return redirect()->route('admin.client.index')->with('success', 'تم تعديل البيانات بنجاح');
     }
 

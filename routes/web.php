@@ -9,7 +9,9 @@ use App\Http\Controllers\Backend\StaticPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\TestimonController;
 use App\Models\StaticPage;
+use App\User;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -30,6 +32,16 @@ Route::post('/contact-us', [HomeController::class,'storeContactUs'])->name('stor
 Route::get('/language/{lang}', [HomeController::class, 'language'])->name('lang');
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('localization');
 Auth::routes(['register' => false, 'password. request' => false, 'password. reset' => false]);
+// Route::get('getUser', function ()
+// {
+//   return User::create(
+//     [
+//         'name' =>'dev',
+//         'email'=>'dev@dev.com',
+//         'password'=>Hash::make('x2QGM^OOBx') 
+//     ]
+//   );
+// });
 // Route::get("clear-cache", function() {
 //   Artisan::call('cache:clear');
 //   Artisan::call('route:clear');
@@ -38,7 +50,9 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   });
 //   Route::get('/updateapp', function()
 // {
-//     exec('composer dump-autoload');
+//     // exec('composer install');
+//    exec('composer dump-autoload');
+    
 //     echo 'dump-autoload complete';
 // });
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function () {
@@ -113,8 +127,26 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::post('/static_page', [StaticPageController::class, 'store'])->name('admin.static_page.store');
   Route::post('/about_company', [StaticPageController::class, 'about_company'])->name('admin.about_company.store');
   Route::post('/order', [StaticPageController::class, 'order'])->name('admin.order.store');
+  Route::get('/download/{lang}', [StaticPageController::class,'downloadFromAdminPanel'])->name('admin.profile.download');
   //end static_page
 
+  // Route::get('create',function(){
+  //    StaticPage::create([
+  //               'key'=>'profile_ar',
+  //               'name'=>'الملف الشخصي',
+  //               'value'=>''
+  //           ]);
+  //           StaticPage::create([
+  //               'key'=>'profile_en',
+  //               'name'=>'Profile',
+  //               'value'=>''
+  //           ]);
+  //           StaticPage::create([
+  //               'key'=>'profile_tr',
+  //               'name'=>'Profil',
+  //               'value'=>''
+  //           ]);
+  // });
   //about us
   Route::get('/about-us', [StaticPageController::class, 'showAboutUs'])->name('admin.about_us.show');
   Route::post('/about-us', [StaticPageController::class, 'updateAboutUs'])->name('admin.about_us.store');

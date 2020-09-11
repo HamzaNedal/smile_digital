@@ -50,9 +50,33 @@ class StaticPageController extends Controller
     public function store(UpdateStaticPageRequest $request,ImageService $imageService)
     {
         $input = $request->all();
-        if (request()->hasfile('profile')) {
-            $input['profile'] =  $imageService->upload($input['profile'],'files');
+       
+
+        if (request()->hasfile('profile_ar')) {
+            $input['profile_ar'] =  $imageService->upload($input['profile_ar'],'files');
         }
+        if (request()->hasfile('profile_en')) {
+            $input['profile_en'] =  $imageService->upload($input['profile_en'],'files');
+        }
+        if (request()->hasfile('profile_tr')) {
+            $input['profile_tr'] =  $imageService->upload($input['profile_tr'],'files');
+        }
+        // dd($input);
+            // StaticPage::create([
+            //     'key'=>'profile_ar',
+            //     'name'=>'الملف الشخصي',
+            //     'value'=>$input['profile_ar']
+            // ]);
+            // StaticPage::create([
+            //     'key'=>'profile_en',
+            //     'name'=>'Profile',
+            //     'value'=>$input['profile_en']
+            // ]);
+            // StaticPage::create([
+            //     'key'=>'profile_tr',
+            //     'name'=>'Profil',
+            //     'value'=>$input['profile_tr']
+            // ]);
         foreach ($input as $key => $value) {
             StaticPage::where(['key'=>$key])->update([
                 'value' =>  $value,
@@ -83,6 +107,7 @@ class StaticPageController extends Controller
 
     public function updateAboutUs(UpdateAboutUsRequest $request)
     {
+       
         $input = $request->except('_token');
         $fk_static_pages = StaticPage::where(['key'=>'about_us'])->first()->id;
         foreach ($input as $key => $value) {
@@ -98,7 +123,15 @@ class StaticPageController extends Controller
 
     public  function download()
     {
-        $profile = StaticPage::where(['key'=>'profile'])->first();
+        $profile = StaticPage::where(['key'=>'profile_'.session('lang')])->first();
+        if(!$profile->value){
+            return back();
+        }
+        return redirect(asset('files/'.$profile->value));
+    }
+    public  function downloadFromAdminPanel($lang)
+    {
+        $profile = StaticPage::where(['key'=>'profile_'.$lang])->first();
         if(!$profile->value){
             return back();
         }

@@ -50,16 +50,31 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="profile">Profile</label>
-            <input type="file" class="form-control-file" id="profile"  name="profile">
-            <a href="{{ route('profile.download') }}">Download</a>
-            </div> 
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
             <label for="address">العنوان</label>
             <textarea class="form-control" id="address" name="address">{{ $page_static->where('key','address')->first()->value }}</textarea>
             </div> 
         </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="profile">البروفايل بالعربي</label>
+            <input type="file" class="form-control-file" id="profile"  name="profile_ar">
+            <a target="_black" href="{{ route('admin.profile.download',['lang'=>'ar']) }}">تحميل الملف</a>
+            </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="profile">البروفايل بالانجليزي</label>
+            <input type="file" class="form-control-file" id="profile"  name="profile_en">
+            <a target="_black" href="{{ route('admin.profile.download',['lang'=>'en']) }}">تحميل الملف</a>
+            </div> 
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="profile">البروفايل بالتركي </label>
+            <input type="file" class="form-control-file" id="profile"  name="profile_tr">
+            <a target="_black" href="{{ route('admin.profile.download',['lang'=>'tr']) }}">تحميل الملف</a>
+            </div> 
+        </div>
+
       </div>
   </div>

@@ -9,7 +9,7 @@
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
    <x-backend.services.forms.category_form name="ar" title='العنوان'>
      <x-slot name='title_placeholder'>ادخل العنوان</x-slot>
-     @isset($category)
+     @isset($category->translation[0])
      <x-slot name='title_data'>{{ $category->translation[0]->name }}</x-slot>
      <x-slot name='desc_data'>{{ $category->translation[0]->description }}</x-slot>
     @endisset
@@ -18,7 +18,7 @@
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"> 
     <x-backend.services.forms.category_form name="en" title='Title' >
     <x-slot name='title_placeholder'>Enter Title</x-slot>
-    @isset($category)
+    @isset($category->translation[1])
       <x-slot name='title_data'>{{ $category->translation[1]->name }}</x-slot>
       <x-slot name='desc_data'>{{ $category->translation[1]->description }}</x-slot>
     @endisset 
@@ -27,7 +27,7 @@
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
     <x-backend.services.forms.category_form name="tr" title='Başlık' >
       <x-slot name='title_placeholder'>Adresi girin</x-slot>
-      @isset($category)
+      @isset($category->translation[2])
         <x-slot name='title_data'>{{ $category->translation[2]->name }}</x-slot>
         <x-slot name='desc_data'>{{ $category->translation[2]->description }}</x-slot>
       @endisset 
