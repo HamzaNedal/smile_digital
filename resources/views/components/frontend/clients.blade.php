@@ -8,9 +8,12 @@
             
             <div class="owl-carousel owl-carousel-clients owl-theme">
                 @foreach ($clients as $client)
-                <div class="item text-center">
+                <div class="item text-center" style="padding: 10px;">
                     <div class="clients-img">
-                        <img src="{{ asset('images/'.$client->parent->image) }}" alt="{{ $client->name }}" title="{{ $client->name }}">
+                        <a href="{{ $client->parent->link }}" target="_blank">
+
+                            <img src="{{ asset('images/'.$client->parent->image) }}" alt="{{ $client->name }}" title="{{ $client->name }}">
+                        </a>
                     </div>
                 </div>
                 @endforeach

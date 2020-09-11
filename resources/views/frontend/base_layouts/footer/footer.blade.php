@@ -12,6 +12,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js" integrity="sha512-Y2IiVZeaBwXG1wSV7f13plqlmFOx8MdjuHyYFVoYzhyRr3nH/NMDjTBSswijzADdNzMyWNetbLMfOpIPl6Cv9g==" crossorigin="anonymous"></script>
 <script>
     new WOW().init();
+    $('#exampleModalCenter').on('hidden.bs.modal', function () {
+        document.getElementById('runVideo').pause();
+    });
+    $('#exampleModalCenter').on('show.bs.modal', function () {
+        document.getElementById('runVideo').play()
+    });
 </script>
 @toastr_js
 @toastr_render

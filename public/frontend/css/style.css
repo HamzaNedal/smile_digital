@@ -585,12 +585,15 @@ ol {
 }
 .clients-img{
   display: flex;
-  width: 393px;
-  height: 333px;
+  width: 420px;
+  height: 253px;
   vertical-align: middle;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.164);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.164);
+}
+.text-center {
+  padding:10px;
 }
 .clients-img img{
   max-width: 200px;
