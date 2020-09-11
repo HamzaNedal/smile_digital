@@ -33,7 +33,9 @@ class UpdateStaticPageCompanyRequest extends FormRequest
             'en.description'=>'required|string',
             'tr.description'=>'required|string',
 
-            'image'=>'sometimes|file',
+            'ar.file'=>'sometimes|nullable|file',
+            'en.file'=>'sometimes|nullable|file',
+            'tr.file'=>'sometimes|nullable|file',
         ];
     }
 }

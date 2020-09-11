@@ -139,14 +139,41 @@ class StaticPageController extends Controller
     }
     public function about_company(UpdateStaticPageCompanyRequest $request,ImageService $imageService,ModelServices $modelServices)
     {
-        $input = $request->except('_token');
-        if (request()->hasfile('image')) {
-            $input['image'] =  $imageService->upload($input['image'],'files');
-            StaticPage::where(['key'=>'company'])->update(['file'=>$input['image']]);
-            unset($input['image']);
+        
+        $input = $request->except('_token');  
+        // dd($input);
+        foreach ($input as $key => $value) {
+           StaticPage::create([
+               'key'=>'company_'.$key,
+               'name'=>$value['title'],
+               'value'=>$value['description'],
+               'file'=>'15994666335f55ec8921002.mp4',
+           ]);
+        // if(array_key_exists('file',$value)){
+        //     if(file_exists($value['file'])){
+        //         $value['file'] =  $imageService->upload($value['file'],'files');
+        //         StaticPage::where(['key'=>'company_'.$key])->update([
+        //             'name'=>$value['title'],
+        //             'value' => $value['description'],
+        //             'file' => $value['file'],
+        //         ]);
+        //     }
+        // }else{
+        //     StaticPage::where(['key'=>'company_'.$key])->update([
+        //         'name'=>$value['title'],
+        //         'value' => $value['description'],
+        //     ]);
+        // }
+       
+
         }
-        $fk_static_pages = StaticPage::where(['key'=>'company'])->first()->id;
-        $modelServices->update($input,$fk_static_pages);
+        // if (request()->hasfile('file')) {
+        //     $input['file'] =  $imageService->upload($input['image'],'files');
+        //     // StaticPage::where(['key'=>'company'])->update(['file'=>$input['image']]);
+        //     // unset($input['image']);
+        // }
+        // $fk_static_pages = StaticPage::where(['key'=>'company'])->first()->id;
+        // $modelServices->update($input,$fk_static_pages);
         return redirect()->route('admin.static_page.index')->with('success', 'تم تحديث البيانات بنجاح');
     }
     public function order(UpdateStaticPageOrderRequest $request,ModelServices $modelServices)

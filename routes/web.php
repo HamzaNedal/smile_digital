@@ -48,6 +48,10 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   Artisan::call('config:clear');
 //   Artisan::call('view:clear');
 //   });
+// Route::get("migrate", function() {
+//   Artisan::call('migrate');
+//   return StaticPage::all();
+//   });
 //   Route::get('/updateapp', function()
 // {
 //     // exec('composer install');
