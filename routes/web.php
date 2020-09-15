@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\StaticPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\TestimonController;
+use App\Models\Static_Page_Translation;
 use App\Models\StaticPage;
 use App\User;
 use Illuminate\Support\Facades\Artisan;
@@ -36,9 +37,9 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 // {
 //   return User::create(
 //     [
-//         'name' =>'dev',
-//         'email'=>'dev@dev.com',
-//         'password'=>Hash::make('x2QGM^OOBx') 
+//         'name' =>'',
+//         'email'=>'',
+//         'password'=>Hash::make('') 
 //     ]
 //   );
 // });
@@ -154,6 +155,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   //about us
   Route::get('/about-us', [StaticPageController::class, 'showAboutUs'])->name('admin.about_us.show');
   Route::post('/about-us', [StaticPageController::class, 'updateAboutUs'])->name('admin.about_us.store');
+  // Route::get('about',function(){
+  //   return StaticPage::where('key','profile_ar')->update([
+  //     'value'=>'15992452605f528bcce3cf5.pdf'
+  //   ]);
+  // });
   //end about us
 
 });

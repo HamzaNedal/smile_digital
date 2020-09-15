@@ -23,7 +23,7 @@ return [
     'our_values' => 'قيمنا',
     'our_team' => 'فريقنا',
     'our_mission' => 'هدفنا',
-    'who_are_smile_digital' => 'من هي smile digital',
+    'who_are_smile_digital' => 'من هي تبسّم',
     'message_toastr'=>'تم ارسال طلبك بنجاح',
     'success'=>'تهانينا',
     'make_your_order'=>'اطب خدمة',

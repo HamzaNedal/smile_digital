@@ -61,7 +61,7 @@
                 <div class="collapse navbar-collapse sidebar" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">{{ __('home.title') }}</a>
+                            <a class="nav-link" href="{{ asset('home') }}">{{ __('home.title') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">{{ __('home.About_Smile_Degital') }}</a>

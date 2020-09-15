@@ -124,6 +124,7 @@ class StaticPageController extends Controller
     public  function download()
     {
         $profile = StaticPage::where(['key'=>'profile_'.session('lang')])->first();
+        // dd(StaticPage::where(['key'=>'profile_'.session('lang')])->get());
         if(!$profile->value){
             return back();
         }

@@ -66,14 +66,14 @@ $('.owl-carousel.owl-carousel-clients').owlCarousel({
 var scroll = new SmoothScroll('a[href*="#"]');
 
 
-$(window).scroll(function() {
+$(window).on('scroll',function() {
     if ($(this).scrollTop() > 50) {
         $('#myBtn').fadeIn('slow');
     } else {
         $('#myBtn').fadeOut('slow');
     }
 });
-$('#myBtn').click(function() {
+$(document).on('click','#myBtn',function() {
     $("html, body").animate({ scrollTop: 0 }, 2000);
     return false;
 });
