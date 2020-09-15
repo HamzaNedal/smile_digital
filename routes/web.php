@@ -36,8 +36,8 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 // {
 //   return User::create(
 //     [
-//         'name' =>'dev',
-//         'email'=>'dev@dev.com',
+//         'name' =>'',
+//         'email'=>'',
 //         'password'=>Hash::make('') 
 //     ]
 //   );
