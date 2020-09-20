@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="{{ asset('frontend') }}/img/logo-footer.png" alt="">
+                    <img src="{{ asset('frontend') }}/img/Group 122.png" alt="">
                 </div>
                 <div class="col-md-4">
                     <ul>

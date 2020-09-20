@@ -72,6 +72,24 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fab fa-servicestack"></i>
               <p>
+                السلايدر
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.slider.index') }}" class="nav-link">
+                  <i class="fab fa-servicestack nav-icon"></i>
+                  <p>عرض السلايدر</p>
+                </a>
+              </li>
+            </ul>            
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fab fa-servicestack"></i>
+              <p>
                 الشهادات
                 <i class="fas fa-angle-left right"></i>
                 {{-- <span class="badge badge-info right">6</span> --}}

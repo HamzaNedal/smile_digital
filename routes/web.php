@@ -5,16 +5,13 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaticPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\TestimonController;
-use App\Models\Static_Page_Translation;
-use App\Models\StaticPage;
-use App\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +48,6 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   });
 // Route::get("migrate", function() {
 //   Artisan::call('migrate');
-//   return StaticPage::all();
 //   });
 //   Route::get('/updateapp', function()
 // {
@@ -134,6 +130,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::post('/order', [StaticPageController::class, 'order'])->name('admin.order.store');
   Route::get('/download/{lang}', [StaticPageController::class,'downloadFromAdminPanel'])->name('admin.profile.download');
   //end static_page
+  
+    //sliders
+    Route::get('/sliders', [SliderController::class,'index'])->name('admin.slider.index');
+    Route::get('/slider/datatable', [SliderController::class,'datatable'])->name('admin.slider.datatable');
+    Route::get('/slider/create', [SliderController::class,'create'])->name('admin.slider.create');
+    Route::post('/sliders', [SliderController::class,'store'])->name('admin.slider.store');
+    Route::get('/slider/{id}/edit', [SliderController::class,'edit'])->name('admin.slider.edit');
+    Route::put('/slider/{id}', [SliderController::class,'update'])->name('admin.slider.update');
+    Route::delete('/slider/{id}', [SliderController::class,'destroy'])->name('admin.slider.destroy');
+    //end sliders
 
   // Route::get('create',function(){
   //    StaticPage::create([
