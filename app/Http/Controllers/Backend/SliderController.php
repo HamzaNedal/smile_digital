@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateSliderRequest;
 use App\Http\Requests\UpdateSliderRequest;
 use App\Models\Slider_Translation;
@@ -152,6 +150,7 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $slider = Slider::findOrFail($id);
+        $slider->translation()->delete();
         Slider::destroy($id);
         return redirect()->back()->with('success','The Slider has been deleted successfully');
     }
