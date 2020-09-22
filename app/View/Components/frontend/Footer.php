@@ -37,4 +37,7 @@ class Footer extends Component
     public function ServiceCategories(){
         return Service_Categories_Translation::where('lang_code',session('lang'))->get();
      }
+     public function places(){
+        return StaticPage::where('key','place')->get();
+     }
 }

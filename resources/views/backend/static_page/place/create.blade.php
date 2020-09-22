@@ -12,7 +12,7 @@
                         <div class="card card-primary mt-2 mr-2">
                           <div class="card-header">
                             <h3 class="card-title float-left"> إضافة مكان</h3>
-                            <small style="color:black"> (عليك إضافة البيانات لجميع اللغات) </small>
+                            {{-- <small style="color:black"> (عليك إضافة البيانات لجميع اللغات) </small> --}}
                           </div>
                           <form action="{{ route('admin.place.store') }}" method="post" enctype="multipart/form-data">
                             @csrf

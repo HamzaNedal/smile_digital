@@ -14,7 +14,7 @@
                           <div class="card-header">
                             <h3 class="card-title float-left">تعديل الاسم</h3>
                           </div>
-                          <form action="{{ route('admin.place.update',['id'=>$category->id]) }}" method="post" enctype="multipart/form-data">
+                          <form action="{{ route('admin.place.update',['id'=>$place->id]) }}" method="post" enctype="multipart/form-data">
                               @csrf
                               @method('put')
                               @include('backend.static_page.place.fields')

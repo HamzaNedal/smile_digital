@@ -25,7 +25,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body">
-            <video width="450" height="240" controls id="runVideo">
+            <video width="100%" height="100%" controls id="runVideo">
                 <source src=" {{ asset('files/'.$staticPages->file) }}" type="video/mp4">
                 <source src=" {{ asset('files/'.$staticPages->file) }}" type="video/ogg">
                 Your browser does not support the video tag.

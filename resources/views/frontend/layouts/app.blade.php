@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html >
+<html class="notranslate">
   <head>
     @include('frontend.base_layouts.header.header')
     @stack('css')

@@ -21,19 +21,20 @@ class PlaceController extends Controller
     }
     public function edit($id)
     {
-        return view('backend.static_page.place.edit');
+        $place = StaticPage::findOrFail($id);
+        return view('backend.static_page.place.edit',compact('place'));
     }
     public function placesSmileInWorldsStore(Request $request)
     {
         $input = $request->except(['_method', '_token']);
-        $data =  StaticPage::create(['key'=>'place','name'=>'place','value'=>$input['name']]);
+          StaticPage::create(['key'=>'place','name'=>'place','value'=>$input['name']]);
         return redirect()->route('admin.place.index')->with('success', 'تم إضافة البيانات بنجاح');
     }
 
     public function placesSmileInWorldsUpdate(Request $request,$id)
     {
         $input = $request->except(['_method', '_token']);
-        StaticPage::where(['id',$id])->update(['value' => $input['name']]);
+        StaticPage::where('id',$id)->update(['value' => $input['name']]);
         return redirect()->route('admin.place.index')->with('success', 'تم تحديث البيانات بنجاح');
     }
 

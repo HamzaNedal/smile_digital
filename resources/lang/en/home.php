@@ -41,4 +41,5 @@ return [
     'There_are_no_services_yet'=>'There are no services yet',
     'categories'=>'Categories',
     'show'=>'Show',
+    'Our_representative_offices'=>'Our representative offices'
 ];

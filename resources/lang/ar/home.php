@@ -41,4 +41,5 @@ return [
     'There_are_no_services_yet'=>'ليس هناك خدمات لهذا القسم بعد',
     'categories'=>'الأقسام',
     'show'=>'عرض',
+    'Our_representative_offices'=>'مكاتبا التمثيلية '
 ];

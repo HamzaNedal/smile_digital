@@ -50,7 +50,6 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   });
 // Route::get("migrate", function() {
 //   Artisan::call('migrate');
-
 //   });
 //   Route::get('/updateapp', function()
 // {

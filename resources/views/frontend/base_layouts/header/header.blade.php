@@ -21,4 +21,14 @@
     @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" />
     <title>{{ __('home.title') }}</title>
+    <style>
+        .skiptranslate{
+            display: none !important;
+        }
+        body{
+            position: relative !important;
+            min-height: 100% !important;
+            top: 0 !important;
+        }
+    </style>
     @toastr_css

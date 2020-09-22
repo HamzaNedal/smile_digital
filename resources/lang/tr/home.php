@@ -41,5 +41,6 @@ return [
     'There_are_no_services_yet'=>'Henüz hizmet yok',
     'categories'=>'kategoriler',
     'show'=>'göstermek',
+    'Our_representative_offices' =>'Temsilcilik ofislerimiz'
 
 ];

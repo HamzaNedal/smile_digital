@@ -25,3 +25,10 @@
 </section>
     <x-frontend.modal-categories/>
 @endempty
+@push('js')
+<script>
+    $('.showMyServices').on('click',function(){
+        window.scrollBy(0,$('body').height());
+    });
+</script>
+@endpush
