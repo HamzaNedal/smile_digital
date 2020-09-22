@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'إضافة عميل')
+@section('title', 'إضافة مكان')
 
 @section('content')
 
@@ -11,13 +11,13 @@
                         <!-- general form elements -->
                         <div class="card card-primary mt-2 mr-2">
                           <div class="card-header">
-                            <h3 class="card-title float-left">إضافة عميل</h3>
+                            <h3 class="card-title float-left"> إضافة مكان</h3>
                             <small style="color:black"> (عليك إضافة البيانات لجميع اللغات) </small>
                           </div>
-                          <form action="{{ route('admin.client.store') }}" method="post" enctype="multipart/form-data">
+                          <form action="{{ route('admin.place.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             
-                                @include('backend.clients.fields')
+                                @include('backend.static_page.place.fields')
                                 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">حفظ</button>

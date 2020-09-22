@@ -25,8 +25,20 @@ return [
     'our_mission' => 'Our Mission',
     'who_are_smile_digital' => 'Who Are Smile Digital',
     'message_toastr'=>'Your message has been sent successfully',
+    'request_toastr'=>'Your request has been sent successfully',
     'success'=>'Success',
     'make_your_order'=>'Make your order',
-
-
+    'close'=>'Close',
+    'services'=>'Services',
+    'name' =>'Name',
+    'country_name'=>'Conutry Name',
+    'country_code'=>'Country Code',
+    'phone_no'=>'Phone number',
+    'email'=>'Email',
+    'short_description'=>'Short Description',
+    'file'=>'File',
+    'send'=>'Send',
+    'There_are_no_services_yet'=>'There are no services yet',
+    'categories'=>'Categories',
+    'show'=>'Show',
 ];

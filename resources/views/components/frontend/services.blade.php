@@ -24,7 +24,8 @@
                         <h3>{{ $serCat->name }}</h3>
                         <ul>
                             @foreach ($serCat->translation as $key => $item)
-                            <li><span class="number">{{ ++$key }}</span>{{ $item->name }}</li>
+                            <li role="button" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+                            data-target="#MyService_{{ $item->fk_services }}"><span class="number">{{ ++$key }}</span>{{ $item->name }}</li>
                             @endforeach
                         </ul>
                     </div>

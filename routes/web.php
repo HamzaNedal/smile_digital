@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\AchievementController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ClientController;
 use App\Http\Controllers\Backend\ContactUsController;
+use App\Http\Controllers\Backend\PlaceController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaticPageController;
@@ -25,9 +26,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
-Route::get('/download', [StaticPageController::class,'download'])->name('profile.download');
-Route::post('/contact-us', [HomeController::class,'storeContactUs'])->name('storeContactUs');
+Route::get('/download', [StaticPageController::class, 'download'])->name('profile.download');
+Route::post('/contact-us', [HomeController::class, 'storeContactUs'])->name('storeContactUs');
 Route::get('/language/{lang}', [HomeController::class, 'language'])->name('lang');
+Route::post('/', [HomeController::class, 'storeServiceResquests'])->name('storeServiceResquests');
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('localization');
 Auth::routes(['register' => false, 'password. request' => false, 'password. reset' => false]);
 // Route::get('getUser', function ()
@@ -48,6 +50,7 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //   });
 // Route::get("migrate", function() {
 //   Artisan::call('migrate');
+
 //   });
 //   Route::get('/updateapp', function()
 // {
@@ -57,7 +60,7 @@ Auth::routes(['register' => false, 'password. request' => false, 'password. rese
 //     echo 'dump-autoload complete';
 // });
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function () {
-  
+
   Route::get('/home', [HomeController::class, 'dashboard'])->name('admin.home');
 
 
@@ -80,20 +83,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::get('/service/{id}/edit', [ServiceController::class, 'edit'])->name('admin.service.edit');
   Route::put('/service/{id}', [ServiceController::class, 'update'])->name('admin.service.update');
   Route::delete('/service/{id}', [ServiceController::class, 'destroy'])->name('admin.service.destroy');
-  // Route::get('/service_requests', [ServiceController::class, 'serviceResquests'])->name('admin.service_requests.index');
-  // Route::get('/service_requests/datatable', [ServiceController::class, 'datatableServiceResquests'])->name('admin.service_requests.datatable');
-  // Route::delete('/service_requests/{id}', [ServiceController::class, 'destroyserviceResquests'])->name('admin.service_requests.destroy');
+  Route::get('/service_requests', [ServiceController::class, 'serviceResquests'])->name('admin.service_requests.index');
+  Route::get('/service_requests/datatable', [ServiceController::class, 'datatableServiceResquests'])->name('admin.service_requests.datatable');
+  Route::delete('/service_requests/{id}', [ServiceController::class, 'destroyserviceResquests'])->name('admin.service_requests.destroy');
+  Route::put('/service_requests/status/{service}', [ServiceController::class, 'status'])->name('admin.service_requests.status.update');
   //end services
 
   //Category
-  Route::get('/categories', [CategoryController::class,'index'])->name('admin.category.index');
-  Route::get('/category/datatable', [CategoryController::class,'datatable'])->name('admin.category.datatable');
-  Route::get('/category/create', [CategoryController::class,'create'])->name('admin.category.create');
-  Route::post('/category', [CategoryController::class,'store'])->name('admin.category.store');
-  Route::put('/category/{id}', [CategoryController::class,'update'])->name('admin.category.update');
-  Route::get('/category/{id}/edit', [CategoryController::class,'edit'])->name('admin.category.edit');
-  Route::delete('/category/{id}', [CategoryController::class,'destroy'])->name('admin.category.destroy');
-  Route::put('/category/services/update', [CategoryController::class,'updateCategoryForServices'])->name('admin.category.services.update');
+  Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category.index');
+  Route::get('/category/datatable', [CategoryController::class, 'datatable'])->name('admin.category.datatable');
+  Route::get('/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
+  Route::post('/category', [CategoryController::class, 'store'])->name('admin.category.store');
+  Route::put('/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+  Route::get('/category/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+  Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+  Route::put('/category/services/update', [CategoryController::class, 'updateCategoryForServices'])->name('admin.category.services.update');
   //end category
 
   //Achievement
@@ -128,18 +132,28 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::post('/static_page', [StaticPageController::class, 'store'])->name('admin.static_page.store');
   Route::post('/about_company', [StaticPageController::class, 'about_company'])->name('admin.about_company.store');
   Route::post('/order', [StaticPageController::class, 'order'])->name('admin.order.store');
-  Route::get('/download/{lang}', [StaticPageController::class,'downloadFromAdminPanel'])->name('admin.profile.download');
+  Route::get('/download/{lang}', [StaticPageController::class, 'downloadFromAdminPanel'])->name('admin.profile.download');
   //end static_page
-  
-    //sliders
-    Route::get('/sliders', [SliderController::class,'index'])->name('admin.slider.index');
-    Route::get('/slider/datatable', [SliderController::class,'datatable'])->name('admin.slider.datatable');
-    Route::get('/slider/create', [SliderController::class,'create'])->name('admin.slider.create');
-    Route::post('/sliders', [SliderController::class,'store'])->name('admin.slider.store');
-    Route::get('/slider/{id}/edit', [SliderController::class,'edit'])->name('admin.slider.edit');
-    Route::put('/slider/{id}', [SliderController::class,'update'])->name('admin.slider.update');
-    Route::delete('/slider/{id}', [SliderController::class,'destroy'])->name('admin.slider.destroy');
-    //end sliders
+
+  //places
+  Route::get('/places', [PlaceController::class, 'index'])->name('admin.place.index');
+  Route::get('/place/datatable', [PlaceController::class, 'datatable'])->name('admin.place.datatable');
+  Route::get('/place/create', [PlaceController::class, 'create'])->name('admin.place.create');
+  Route::post('/places', [PlaceController::class, 'placesSmileInWorldsStore'])->name('admin.place.store');
+  Route::get('/place/{id}/edit', [PlaceController::class, 'edit'])->name('admin.place.edit');
+  Route::put('/place/{id}', [PlaceController::class, 'placesSmileInWorldsUpdate'])->name('admin.place.update');
+  Route::delete('/place/{id}', [PlaceController::class, 'placesSmileInWorldsDestroy'])->name('admin.place.destroy');
+  //end places
+
+  //sliders
+  Route::get('/sliders', [SliderController::class, 'index'])->name('admin.slider.index');
+  Route::get('/slider/datatable', [SliderController::class, 'datatable'])->name('admin.slider.datatable');
+  Route::get('/slider/create', [SliderController::class, 'create'])->name('admin.slider.create');
+  Route::post('/sliders', [SliderController::class, 'store'])->name('admin.slider.store');
+  Route::get('/slider/{id}/edit', [SliderController::class, 'edit'])->name('admin.slider.edit');
+  Route::put('/slider/{id}', [SliderController::class, 'update'])->name('admin.slider.update');
+  Route::delete('/slider/{id}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
+  //end sliders
 
   // Route::get('create',function(){
   //    StaticPage::create([

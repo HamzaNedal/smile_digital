@@ -6,6 +6,8 @@
           <h3 class="card-title float-left ">
             <x-backend.button route='slider' add='اضافة سلايدر' />      
           </h3>
+          <p style="color:black ; margin-top:10px"> (يتم عرض البيانات باللغة العربية ويمكن تعديل البيانات للغات كافة) </p>   
+
         </div>
         <!-- /.card-header -->
         <div class="card-body">

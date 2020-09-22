@@ -12,17 +12,16 @@
             <table id="form" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="form-users">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Service Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Project Name</th>
-                        <th>Sector Of Project</th>
-                        <th>Short Description</th>
-                        <th>Country</th>
-                        <th>File</th>
-                        <th>Created at </th>
-                        <th>Acation</th>
+                        <th>الاسم</th>
+                        <th>اسم الخدمة</th>
+                        <th>البريد الالكتروني</th>
+                        <th>رقم الهاتف</th>
+                        <th>الوصف</th>
+                        <th>الدولة</th>
+                        <th>الملف</th>
+                        <th>الحالة</th>
+                        <th>تاريخ الطلب </th>
+                        <th>الحدث</th>
                     </tr>
                 </thead>
            

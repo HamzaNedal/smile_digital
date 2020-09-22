@@ -680,7 +680,10 @@ ol {
   width: 100%;
   max-width: 200px;
 }
-
+[type=file] {
+  text-align: left;
+  direction: rtl;
+}
 .footer ul li {
   margin-bottom: 20px;
   font-size: 14px;
@@ -689,7 +692,7 @@ ol {
 .footer ul li i.fa {
   margin-right: 10px;
 }
-
+ 
 @media (max-width: 991.98px) {
   .section-title {
     font-size: 22px;

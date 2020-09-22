@@ -144,26 +144,42 @@ class ServiceController extends Controller
         //    $serviceResquests =  ServiceRequests::get();
         return view('backend.services.service_requests.index');
     }
-    // protected function datatableServiceResquests()
-    // {
-    //     $serviceResquests = ServiceRequests::get();
-    //     $route = 'service_requests';
-    //     return DataTables::of($serviceResquests)->addColumn('actions', function ($data) use ($route) {
-    //         return view('backend.datatables.actions', compact('data', 'route'));
-    //     })->addColumn('title', function ($data) {
-    //         return $data->getService->title;
-    //     })->addColumn('sector_of_project_id', function ($data) {
-    //         return $data->getSector->name;
-    //     })->addColumn('file', function ($data) {
-    //         return '<a href="' . asset("/files/" . $data->file) . '">Download File</a>';
-    //     })->rawColumns(['file', 'title', 'sector_of_project_id', 'actions'])
-    //         ->make(true);
-    // }
-    // public function destroyserviceResquests($id)
-    // {
-    //     $id = (int) $id;
-    //     $serviceRequests = ServiceRequests::findOrFail($id);
-    //     ServiceRequests::destroy($id);
-    //     return redirect()->back()->with('success', 'The Service Resquest has been deleted successfully');
-    // }
+    
+    public function status(ServiceRequests $service)
+    {
+       
+        $service->status = "1";
+        $service->save();
+        return back();
+    }
+    protected function datatableServiceResquests()
+    {
+        $serviceResquests = ServiceRequests::get();
+        $route = 'service_requests';
+        $bindModel = 'service';
+        return DataTables::of($serviceResquests)->addColumn('deletebtn', function ($data) use ($route) {
+            return view('backend.datatables.delete', compact('data', 'route'));
+        })->addColumn('readbtn', function ($data) use ($route,$bindModel) {
+            $route ='service_requests.status';
+            return $data->status == 0 ? view('backend.datatables.read', compact('data', 'route','bindModel')) : "";
+        })->addColumn('name_service', function ($data) {
+            return $data->parent->translation->where('lang_code','ar')->first()->name;
+        })->addColumn('file', function ($data) {
+            return '<a target="_blank" href="' . asset("/files/" . $data->file) . '">تحميل الملف</a>';
+        })->addColumn('read', function ($data){
+             if($data->status == 1):
+                 return 'مقروء';
+             else:
+                 return 'غير مقروء';
+            endif;
+         })->rawColumns(['file','read','readbtn','title','name_service','deletebtn'])
+            ->make(true);
+    }
+    public function destroyserviceResquests($id)
+    {
+        $id = (int) $id;
+        ServiceRequests::findOrFail($id);
+        ServiceRequests::destroy($id);
+        return redirect()->back()->with('success', 'تم حذف العنصر بنجاح');
+    }
 }

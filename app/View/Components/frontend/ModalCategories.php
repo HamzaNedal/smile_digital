@@ -1,23 +1,20 @@
 <?php
 
-namespace App\View\Components\Frontend;
+namespace App\View\Components\frontend;
 
 use App\Models\Service_Categories_Translation;
-use App\Models\Services_Translation;
-use App\Models\StaticPage;
 use Illuminate\View\Component;
 
-class Footer extends Component
+class ModalCategories extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
     public function __construct()
     {
-       
+        //
     }
 
     /**
@@ -27,14 +24,11 @@ class Footer extends Component
      */
     public function render()
     {
-        $staticPages = StaticPage::get();
-        return view('components.frontend.footer');
+        return view('components.frontend.modal-categories');
     }
 
-    public function staticPages(){
-       return StaticPage::get();
-    }
-    public function ServiceCategories(){
+    public function categories()
+    {
         return Service_Categories_Translation::where('lang_code',session('lang'))->get();
-     }
+    }
 }

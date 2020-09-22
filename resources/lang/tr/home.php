@@ -25,9 +25,21 @@ return [
     'our_mission' => 'Görevimiz',
     'who_are_smile_digital' => 'Kim Smile Digital',
     'message_toastr'=>'İsteğiniz başarıyla gönderildi',
+    'request_toastr'=>'İsteğiniz başarıyla gönderildi',
     'success'=>'başarı',
     'make_your_order'=>'Siparişinizi',
-
-
+    'close'=>'Kapat',
+    'services'=>'Hizmetler',
+    'name' =>'İsim',
+    'country_name'=>'ülke adı',
+    'country_code'=>'ülke kodu',
+    'phone_no'=>'Telefon numarası',
+    'email'=>'E-posta',
+    'short_description'=>'Kısa Açıklama',
+    'file'=>'Dosya',
+    'send'=>'göndermek',
+    'There_are_no_services_yet'=>'Henüz hizmet yok',
+    'categories'=>'kategoriler',
+    'show'=>'göstermek',
 
 ];

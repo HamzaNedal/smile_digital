@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateContactUsRequest;
+use App\Http\Requests\CreateServiceDataRequest;
 use App\Models\Achievement;
 use App\Models\Client;
 use App\Models\ContactUs;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\ServiceRequests;
 use App\Models\Testimon;
+use App\Services\ImageService;
 use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
@@ -41,9 +44,7 @@ class HomeController extends Controller
         $clients = count(Client::get()->toArray());
         $achievements = count(Achievement::get()->toArray());
         $testimon = count(Testimon::get()->toArray());
-        return view('backend.home',compact('testimon','categories','services','contactus','clients','achievements','testimon'));
-        // return view('backend.home');
-
+        return view('backend.home', compact('testimon', 'categories', 'services', 'contactus', 'clients', 'achievements', 'testimon'));
     }
 
     public function language($lang)
@@ -60,6 +61,18 @@ class HomeController extends Controller
         App::setLocale(session('lang'));
         ContactUs::Create($request->except('_token'));
         toastr()->success(__('home.message_toastr'), __('home.success'));
+        return back();
+    }
+    public function storeServiceResquests(CreateServiceDataRequest $request, ImageService $imageService)
+    {
+
+        $input = $request->all();
+        Service::findOrFail($request->service_id);
+        if (request()->hasfile('file')) {
+            $input['file'] = $imageService->upload($request->file, 'files');
+        }
+        ServiceRequests::Create($input);
+        toastr()->success(__('home.request_toastr'), __('home.success'));
         return back();
     }
 }

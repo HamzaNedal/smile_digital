@@ -8,7 +8,9 @@
                     <h2>{{ $staticPages->name }}</h2>
                     <p>{{ $staticPages->value }}</p>
                     @if ($staticPages->parent->value)
-                      <a href="{{ $staticPages->parent->value }}" class="btn btn-hero">{{ __('home.make_your_order') }}</a>
+ 
+                      <li role="button" data-backdrop="static" data-keyboard="false" data-toggle="modal"
+                      data-target="#MakeYourOrder"  class="btn btn-hero">{{ __('home.make_your_order') }}</li>
                     @endif
                 </div>
             </div>
@@ -21,5 +23,5 @@
         </div>
     </div>
 </section>
-
+    <x-frontend.modal-categories/>
 @endempty

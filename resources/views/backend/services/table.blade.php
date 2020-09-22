@@ -4,8 +4,10 @@
     <div class="card">
         <div class="card-header">
           <h3 class="card-title float-left">
-            <x-backend.button route='service' add='اضافة خدمة' />      
+            <x-backend.button route='service' add='اضافة خدمة' />   
           </h3>
+          <p style="color:black ; margin-top:10px"> (يتم عرض البيانات باللغة العربية ويمكن تعديل البيانات للغات كافة) </p>   
+
         </div>
         <!-- /.card-header -->
         <div class="card-body">

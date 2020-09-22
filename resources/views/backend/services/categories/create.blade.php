@@ -11,7 +11,8 @@
                         <!-- general form elements -->
                         <div class="card card-primary mt-2 mr-2">
                           <div class="card-header">
-                            <h3 class="card-title float-left">إضافة قسم</h3>
+                            <h3 class="card-title float-left"> إضافة قسم</h3>
+                            <small style="color:black"> (عليك إضافة البيانات لجميع اللغات) </small>
                           </div>
                           <form action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
