@@ -5,7 +5,7 @@
                 <div class="col-md-3">
                     <img src="{{ asset('frontend') }}/img/Group 122.png" alt="">
                 </div>
-                <div class="col-md-3">
+                <div class="{{ $places->isNotEmpty() ? 'col-md-3'  : 'col-md-4' }}">
                     <ul>
                         @if ($staticPages->where('key', 'address')->first()->value)
                             <li>
@@ -25,22 +25,27 @@
                         @endif
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h6>{{ __('home.Our_Services') }}</h6>
+                <div class="{{ $places->isNotEmpty() ? 'col-md-3'  : 'col-md-4' }}">
+                    <h6>{{ __('home.Our_Services') }} :</h6>
                     <ul>
                         @foreach ($ServiceCategories as $service)
                             <x-frontend.modal :service="$service" />
                         @endforeach
                     </ul>
                 </div>
+                @if ($places->isNotEmpty())
                 <div class="col-md-3">
                     <h6>{{ __('home.Our_representative_offices') }} :</h6>
-                    <ul>
-                        @foreach ($places as $place)
-                        <li class="translate">{{ $place->value }}</li>
+                    <ul class="scrollChange translate">
+                        @foreach ($places as $key=> $place)
+                             <li>{{ $place->value }}<span>&#8204;</span></li>
                         @endforeach
                     </ul>
+                       
                 </div>
+                @endif
+
+
             </div>
         </div>
         <div id="google_translate_element"></div>
@@ -69,9 +74,8 @@
     <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        // here is where you change the language
-        pageLanguage: 'ar',
-        includedLanguages: "{{ session('lang') }}", autoDisplay: true,
+        pageLanguage: "{{ session('lang') =='ar' ? 'en' : 'ar'}}",
+        includedLanguages: "{{ session('lang') }}",
       }, 'google_translate_element');
     }
     </script>

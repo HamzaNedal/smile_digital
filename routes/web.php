@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StaticPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\TestimonController;
+use App\Models\Service;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::get('/language/{lang}', [HomeController::class, 'language'])->name('lang'
 Route::post('/', [HomeController::class, 'storeServiceResquests'])->name('storeServiceResquests');
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('localization');
 Auth::routes(['register' => false, 'password. request' => false, 'password. reset' => false]);
+
 // Route::get('getUser', function ()
 // {
 //   return User::create(

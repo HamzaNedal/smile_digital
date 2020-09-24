@@ -17,7 +17,7 @@
                                     {{ $category->name }}
                                 </div>
                                 <div class="col-6">
-                                    <a role="button"  data-toggle="modal" data-backdrop="static" data-keyboard="false"
+                                    <a role="button" style="color: white;"  data-toggle="modal" data-backdrop="static" data-keyboard="false"
                                         data-target="#MyServices-{{ $category->id }}"
                                         class="showMyServices btn btn-primary {{ session('lang') == 'ar' ? 'float-left' : 'float-right' }}"
                                         data-dismiss="modal">{{ __('home.show') }} {{ __('home.services') }}</a>

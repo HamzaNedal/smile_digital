@@ -30,5 +30,26 @@
             min-height: 100% !important;
             top: 0 !important;
         }
+        .scrollChange {
+             height: 185px;
+             overflow-y: scroll;
+        }
+        .scrollChange::-webkit-scrollbar {
+            width: 12px;
+            background: none;
+        }
+
+        .scrollChange::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+            background: none;
+        }
+
+        .scrollChange::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+            background: none;
+        }
+​
     </style>
     @toastr_css

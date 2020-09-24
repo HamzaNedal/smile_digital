@@ -44,7 +44,8 @@ class HomeController extends Controller
         $clients = count(Client::get()->toArray());
         $achievements = count(Achievement::get()->toArray());
         $testimon = count(Testimon::get()->toArray());
-        return view('backend.home', compact('testimon', 'categories', 'services', 'contactus', 'clients', 'achievements', 'testimon'));
+        $serviceRequests = count(ServiceRequests::get()->toArray());
+        return view('backend.home', compact('testimon','serviceRequests', 'categories', 'services', 'contactus', 'clients', 'achievements', 'testimon'));
     }
 
     public function language($lang)
