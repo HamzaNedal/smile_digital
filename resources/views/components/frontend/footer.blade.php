@@ -38,7 +38,7 @@
                     <h6>{{ __('home.Our_representative_offices') }} :</h6>
                     <ul class="scrollChange translate">
                         @foreach ($places as $key=> $place)
-                             <li>{{ $place->value }}<span>&#8204;</span></li>
+                             <li>{{ $place->value }}&#8204;<span>&#8204;</span></li>
                         @endforeach
                     </ul>
                        
@@ -84,7 +84,7 @@
 <script>
    interval = setInterval(function(){ 
     var select = $('.goog-te-combo')[0];
-        if(select != 'undefined'){
+        if(select != undefined){
             var event = new Event('change');
             select.dispatchEvent(event);
             select.value ="{{ session('lang') }}";
