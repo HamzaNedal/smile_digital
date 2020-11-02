@@ -41,12 +41,12 @@
         <label for="link">الرابط</label>
         <input type="text" class="form-control" id="link" @isset($slider)  value="{{ $slider->link }}" @endisset  value="{{ old('link') }}"  name="link" placeholder="أدخل الرابط">
       </div>
-    <div class="form-group p-3">
+    {{-- <div class="form-group p-3">
       <label for="photo">صورة(اختياري)</label>
       <div class="input-group">
         <div class="custom-file">
           <input type="file"  id="photoInput" name="image">
-          {{-- <label class="custom-file-label" for="image">Add Image</label> --}}
+          <label class="custom-file-label" for="image">Add Image</label>
           @isset($slider)
           <img src="{{ asset('image/'.$slider->image) }}" alt="" class="returnImage" style="width: 50px;" id="image"> 
           <img src="{{ asset('image/'.$slider->image) }}" class="d-none backImage" style="width: 50px;"> 
@@ -57,7 +57,7 @@
         </div>
 
       </div>
-    </div>
+    </div> --}}
     <div class="form-group p-3">
       <label for="background-image">صورة كخلفية</label>
       <div class="input-group">

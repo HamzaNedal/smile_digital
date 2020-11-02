@@ -2,6 +2,7 @@
 
 
 @section('content')
+    <x-frontend.slider />
     <x-frontend.order />
     <x-frontend.hero-section />
     <x-frontend.about-us />

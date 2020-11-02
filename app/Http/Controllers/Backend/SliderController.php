@@ -27,14 +27,16 @@ class SliderController extends Controller
         $fk = 'fk_slider';
         return DataTables::of($sliders)->addColumn('action', function ($data) use($route,$fk) {
             return view('backend.datatables.actions',compact('data','route','fk'));
-        })->addColumn('image', function ($data) {
-           return view('backend.datatables.sliderImages',compact('data'));
-        })->addColumn('background_image', function ($data) {
+      })
+        //->addColumn('image', function ($data) {
+        // //    return view('backend.datatables.sliderImages',compact('data'));
+        // })
+        ->addColumn('background_image', function ($data) {
               return view('backend.datatables.background_imageSlider',compact('data'));
         })->addColumn('link', function ($data) {
             return '<a href="'.$data->parent->link.'">'.$data->parent->link.'</a>';
         })
-        ->rawColumns(['image','link','background_image','action'])
+        ->rawColumns(['link','background_image','action'])
         ->make(true);
      }
     /**
@@ -152,6 +154,6 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
         $slider->translation()->delete();
         Slider::destroy($id);
-        return redirect()->back()->with('success','The Slider has been deleted successfully');
+        return redirect()->back()->with('success','تم حذف البيانات بنجاح');
     }
 }

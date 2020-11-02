@@ -38,7 +38,7 @@
                   { data: 'title', name: 'title' },
                   { data: 'description', name: 'description' },
                   { data: 'link', name: 'link' },
-                  { data: 'image', name: 'image' },
+                //   { data: 'image', name: 'image' },
                   { data: 'background_image', name: 'background_image' },
                   { data: 'created_at', name: 'created_at' },
                   {data: 'action', name: 'action', orderable: false, searchable: false}

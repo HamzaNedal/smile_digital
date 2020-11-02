@@ -6,7 +6,8 @@
 }
 
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Cairo', sans-serif;
+
 }
 
 h1,
@@ -15,7 +16,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Cairo', sans-serif;
+
 }
 
 ul,
@@ -115,7 +117,7 @@ ol {
 .navbar .btn-nav {
   background-color: #a10b62;
   color: #FFF;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Cairo', sans-serif;
   border-radius: 10px;
   padding: 0 12px 0px 12px;
   line-height: 3.5;
@@ -385,10 +387,13 @@ ol {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 65px;
-    height: 65px;
+  width: 105px;
+    height: 105px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+          border: 1px solid #bebebe57;
+          border-radius: 50px;
+          padding: 15px;
 }
 
 .services .services-containt h3 {
@@ -399,6 +404,8 @@ ol {
 .services .services-containt ul {
   margin-top: 40px;
   margin-bottom: 40px;
+  text-align: right;
+
 }
 
 .services .services-containt ul li {
@@ -408,11 +415,16 @@ ol {
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
 }
+.services .services-containt ul li:hover{
+  color:red;
+  cursor: pointer;
+}
 
 .services .services-containt ul li .number {
   display: inline-block;
   width: 33px;
   height: 33px;
+  float: right;
   background-color: #a10b62;
   margin-right: 20px;
   margin-left: 9px;
@@ -421,6 +433,7 @@ ol {
   line-height: 33px;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
+  text-align: center;
 }
 
 .services .services-containt:hover {
@@ -442,7 +455,7 @@ ol {
 }
 
 .achievements .containt {
-  background: url("../img/11.jpg") no-repeat center;
+  /* background: url("../img/11.jpg") no-repeat center; */
   background-size: cover;
   margin-bottom: 30px;
   position: relative;
@@ -489,17 +502,20 @@ ol {
   width: 100%;
   height: 100%;
   background-color: rgba(161, 11, 98, 0.9);
-  opacity: .5;
+  opacity: 0.2;
   left: 0;
   top: 0;
-  z-index: -1;
+  z-index: 1;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
+
 }
 
 .achievements .containt img {
   width: 100%;
   z-index: 10;
+  height: 200px;
+
 }
 
 .testimonies {
@@ -694,7 +710,16 @@ ol {
 .footer ul li i.fa {
   margin-right: 10px;
 }
- 
+.slider .carousel-item {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 30px;
+
+}
+.slider .carousel-caption {
+bottom: 180px;
+}
 @media (max-width: 991.98px) {
   .section-title {
     font-size: 22px;
