@@ -81,6 +81,9 @@ ol {
 
 .navbar {
   padding-top: 20px;
+  padding-bottom: 20px;
+  position: fixed;
+  z-index: 10;
 }
 
 .navbar a {

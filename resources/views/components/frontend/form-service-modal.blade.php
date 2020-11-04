@@ -1,4 +1,4 @@
-<div class="MyService_{{ $serviceTranslation->fk_services }} modal fade" id="MyService_{{ $serviceTranslation->fk_services }}" tabindex="-1" role="dialog"
+<div  class="MyService_{{ $serviceTranslation->fk_services }} modal fade" id="MyService_{{ $serviceTranslation->fk_services }}" tabindex="-1" role="dialog"
     aria-labelledby="MyService" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
