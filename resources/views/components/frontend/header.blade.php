@@ -1,12 +1,13 @@
     <!-- Start Header Section -->
-    <header class="header wow bounceInUp" id="top">
-        <nav class="navbar navbar-expand-lg navbar-light wow slideInLeft">
+    <header class="header" id="top">
+
+        <nav class="navbar navbar-expand-lg navbar-light  slideInLeft">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{ asset('frontend') }}/img/logo.png" alt="">
+                    <img src="{{ asset('frontend') }}/img/logo.png" alt="logo">
                 </a>
                 <div class="d-flex flex-row order-2 order-lg-3 sm">
-                    <a href="{{ route('profile.download') }}" class="btn btn-nav"> <img src="{{ asset('frontend') }}/img/arrow.png" width="20px" height="20px" class="mr-1">
+                    <a rel="nofollow"  target="_blank" href="{{ route('profile.download') }}" class="btn btn-nav"> <img alt="arrow.png" title="{{ __('home.Smile_Digital_Profile') }}" src="{{ asset('frontend') }}/img/arrow.png" width="20px" height="20px" class="mr-1">
                         <span style="margin-top: 10px;">{{ __('home.Smile_Digital_Profile') }}</span>
                     </a>
 

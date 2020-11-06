@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'الإنجازات')
+@section('title', 'الأقسام')
 
 @section('content')
 @push('css')
@@ -16,7 +16,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                 @include('backend.achievements.table')
+                 @include('backend.achievements.categories.table')
             </div>
         </div>
     
@@ -35,18 +35,41 @@
             },
               processing: true,
               serverSide: true,
-              ajax: '{!! route('admin.achievement.datatable') !!}',
+              ajax: '{!! route('admin.achievements.category.datatable') !!}',
               columns: [
                   { data: 'name', name: 'name' },
-                  { data: 'category', name: 'category' },
-                  { data: 'link', name: 'link' },
-                  { data: 'image', name: 'image' },
                   { data: 'created_at', name: 'created_at' },
                   {data: 'actions', name: 'actions', orderable: false, searchable: false}
               ]
           });
       });
   </script>
+      <script>
+        $(document).on('click','#update',function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                }
+            });
+            $.ajax({
+            type: "post",
+            url: "{{ route('admin.achievements.category.services.update') }}",
+            data:{
+                'new_category_id':$('#new_category_id').val(),
+                'old_category_id':$('#old_category_id').val(),
+                '_method': "put"
+            },
+            dataType: "json",
+            success: function (response) {
+                if(response.message=='success'){
+                    location.reload();
+                }
+            }
+        });
+        })
+
+    </script>
 @endpush
+
 @endsection
 

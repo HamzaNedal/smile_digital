@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('storeServiceResquests') }}" method="post" enctype="multipart/form-data" id="formService">
+                <form action="{{ route('storeServiceResquests') }}" method="post" class="formService" enctype="multipart/form-data" id="formService-{{ $serviceTranslation->fk_services }}">
                     @csrf
                     <input type="hidden" name="service_id" value="{{ $serviceTranslation->fk_services }}">
                     <div class="form-group">
@@ -47,15 +47,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('home.close') }}</button>
-                <input type="submit" class="btn btn-primary" value="{{ __('home.send') }}" id="submit-form">
+                <input type="submit" class="btn btn-primary submit-form" value="{{ __('home.send') }}" id="submit-form-{{ $serviceTranslation->fk_services }}">
             </div>
         </div>
     </div>
 </div>
-@push('js')
-<script>
-    $('#submit-form').on('click',function(){
-        $('#formService').submit();
-    })
-</script>
-@endpush
+

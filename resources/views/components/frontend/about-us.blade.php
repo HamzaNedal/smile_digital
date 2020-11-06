@@ -1,4 +1,4 @@
-<section class="about wow slideInLeft" id="about">
+{{-- <section class="about wow slideInLeft" id="about">
     <div class="container">
         <div class="owl-carousel owl-carousel-about owl-theme">
       
@@ -28,4 +28,53 @@
 
         </div>
     </div>
-</section>
+</section> --}}
+
+        <!-- Start About -->
+        <section class="about" id="about">
+            <div class="container">
+          
+                <div class="section-title wow slideInLeft">
+                    @foreach ($aboutUs as $key => $about)
+                    @if($loop->first)
+                            <h2>{{ __('home.'.$aboutUs->min()->name) }}</h2>
+                            <p>{{ $aboutUs->min()->value }}.</p>
+                    @else
+                    @push('about_us')
+
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="containt wow zoomIn">
+                            @if ($about->name == 'our_vision')
+                             <img src="{{ asset('frontend') }}/img/our_vision.png" alt="">
+                            @endif
+                            @if ($about->name == 'our_mission')
+                            <img src="{{ asset('frontend') }}/img/our_mission.png" alt="">
+                           @endif
+                            @if ($about->name == 'our_values')
+                            <img src="{{ asset('frontend') }}/img/our_values.png" alt="">
+                            @endif
+                            @if ($about->name == 'our_team')
+                                <img src="{{ asset('frontend') }}/img/our_policies.png" alt="">
+                            @endif
+                            <div class="item-containt">
+                                <h4 style="text-transform: capitalize;">{{ __('home.'.$about->name) }}</h4>
+                                <p>
+                                    {{$about->value}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    @endpush
+
+                @endif
+                @endforeach
+                </div>
+
+                <div class="row contint-card">
+                    @stack('about_us')
+                </div>
+    
+            </div>
+    
+        </section>
+        <!-- End About -->   

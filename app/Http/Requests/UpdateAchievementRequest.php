@@ -29,6 +29,7 @@ class UpdateAchievementRequest extends FormRequest
             'tr.title'=>'required|string',
             'image'=>'sometimes|image',
             'link'=>'required|url',
+            'category_id'=>'required|integer',
         ];
     }
 }

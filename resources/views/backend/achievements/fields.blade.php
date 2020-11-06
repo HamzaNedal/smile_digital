@@ -35,6 +35,19 @@
     
   </div>
   <div class="form-group" style="padding: 1rem">
+    <label for="category_id">القسم</label>
+    
+    <select class="form-control" name="category_id">
+      
+      @foreach ($categories as $category)
+      <option value="{{ $category->id }}" @isset($achievement) @if ($achievement->fk_achievement_category == $category->id ) {{ 'selected' }} @endif @endisset>
+        {{ $category->translation->where('lang_code','ar')->first()->name }}
+       </option>
+      @endforeach  
+    </select>   
+    <small><a href="{{ route('admin.achievements.category.create') }}">اضافة قسم</a></small>
+ </div>
+  <div class="form-group" style="padding: 1rem">
     <label for="photoInput">صورة</label>
     <div class="input-group">
       <div class="custom-file">
@@ -49,6 +62,7 @@
       </div>
     </div>
   </div>
+  
   <div class="form-group" style="padding: 1rem">
     <label for="link">الرابط</label>
     

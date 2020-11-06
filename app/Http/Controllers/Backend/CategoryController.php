@@ -136,8 +136,7 @@ class CategoryController extends Controller
 
     public function updateCategoryForServices()
     {
-        //new_category_id: 13 Service_Categories_Translation 
-        //old_category_id: 5  ServiceCategory
+
         $new_categories = Service_Categories_Translation::findOrFail(request()->new_category_id)->parent->translation; // all new cateogries
         $old_categories = ServiceCategory::findOrFail(request()->old_category_id)->translation;// all old categories
         foreach ($old_categories as $key => $category) {

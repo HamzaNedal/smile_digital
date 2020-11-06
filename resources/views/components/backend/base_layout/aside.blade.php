@@ -74,7 +74,15 @@
                   <p>عرض الإنجازات</p>
                 </a>
               </li>
-            </ul>            
+            </ul>  
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.achievements.category.index') }}" class="nav-link">
+                  <i class="fab fa-servicestack nav-icon"></i>
+                  <p>عرض أقسام الانجازات</p>
+                </a>
+              </li>
+            </ul>          
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

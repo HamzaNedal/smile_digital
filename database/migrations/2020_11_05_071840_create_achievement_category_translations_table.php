@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAchievementsTable extends Migration
+class CreateAchievementCategoryTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAchievementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('achievements', function (Blueprint $table) {
+        Schema::create('achievement_category_translations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('fk_achievement_category');
+            $table->string('lang_code');
             $table->string('name');
-            $table->string('image');
-            $table->unsignedBigInteger('image');
             $table->timestamps();
             $table->softDeletes();
 
@@ -31,6 +31,6 @@ class CreateAchievementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('achievements');
+        Schema::dropIfExists('achievement_category_translations');
     }
 }

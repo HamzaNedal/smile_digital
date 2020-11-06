@@ -3,12 +3,13 @@
 namespace App\View\Components\Frontend;
 
 use App\Models\Achievement;
+use App\Models\AchievementCategory;
 use App\Models\Achievements_Translation;
 use Illuminate\View\Component;
 
 class Achievements extends Component
 {
-    protected $achievements ;
+    protected $achievementCategory ;
     /**
      * Create a new component instance.
      *
@@ -16,7 +17,7 @@ class Achievements extends Component
      */
     public function __construct()
     {
-       $this->achievements = Achievement::get();
+       $this->achievementCategory = AchievementCategory::get();
     }
 
     /**
@@ -27,7 +28,7 @@ class Achievements extends Component
     public function render()
     {
         return view('components.frontend.achievements',[
-            'achievements'=>$this->achievements
+            'categories'=>$this->achievementCategory
         ]);
     }
 

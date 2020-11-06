@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateAchievementRequest;
 use App\Http\Requests\UpdateAchievementRequest;
 use App\Models\Achievement;
+use App\Models\AchievementCategory;
 use App\Models\Achievements_Translation;
 use App\Services\ImageService;
 use Yajra\Datatables\Datatables;
@@ -31,7 +32,9 @@ class AchievementController extends Controller
             return '<a href="'.$data->achievement->link.'">'.$data->achievement->link.'</a>';
         })->addColumn('image', function ($data) {
             return '<img src="'.asset('images/'. $data->achievement->image).'"  style="width: 60px;height:60px">';
-        })->rawColumns(['actions','link','image'])
+        })->addColumn('category', function ($data) {
+            return $data->achievement->parent_achievement_category->translation->where('lang_code','ar')->first()->name;
+        })->rawColumns(['actions','category','link','image'])
          ->make(true);
      }
     /**
@@ -41,7 +44,8 @@ class AchievementController extends Controller
      */
     public function create()
     {
-        return view('backend.achievements.create');
+        $categories  = AchievementCategory::get();
+        return view('backend.achievements.create',compact('categories'));
     }
 
     /**
@@ -52,13 +56,15 @@ class AchievementController extends Controller
      */
     public function store(CreateAchievementRequest $request,ImageService $imageService)
     {
+      
         $input = $request->except(['_method', '_token']);
         if (request()->hasfile('image')) {
             $input['image'] =  $imageService->upload($request->image,'images');
         }
-        $achievement =  Achievement::create(['image'=>$input['image'],'link'=>$input['link']]);
+        $achievement =  Achievement::create(['image'=>$input['image'],'link'=>$input['link'],'fk_achievement_category'=>$input['category_id']]);
         unset($input['image']);
         unset($input['link']);
+        unset($input['category_id']);
         $id =  $achievement->id;
         foreach ($input as $key => $value) {
             Achievements_Translation::create([
@@ -89,7 +95,8 @@ class AchievementController extends Controller
     public function edit($id)
     {
         $achievement = Achievement::findOrFail($id);
-        return view('backend.achievements.edit', compact('achievement'));
+        $categories  = AchievementCategory::get();
+        return view('backend.achievements.edit', compact('achievement','categories'));
     }
 
     /**
@@ -106,9 +113,11 @@ class AchievementController extends Controller
         if (request()->hasfile('image')) {
             $input['image'] =  $imageService->upload($request->image,'images');
             Achievement::where('id',$id)->update(['image'=>$input['image']]);
+            unset($input['image']);
         }
-          Achievement::where('id',$id)->update(['link'=>$input['link']]);
+          Achievement::where('id',$id)->update(['link'=>$input['link'],'fk_achievement_category'=>$input['category_id']]);
           unset($input['link']);
+          unset($input['category_id']);
         foreach ($input as $key => $value) {
             Achievements_Translation::where(['fk_achievements'=>$id,'lang_code' => $key])->update([
                 'name' => $value['title'],

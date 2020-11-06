@@ -29,6 +29,8 @@ class CreateAchievementRequest extends FormRequest
             'tr.title'=>'required|string',
             'image'=>'required|image',
             'link'=>'required|url',
+            'category_id'=>'required|integer',
+            // 'desctiption'=>'required|url',
         ];
     }
 }

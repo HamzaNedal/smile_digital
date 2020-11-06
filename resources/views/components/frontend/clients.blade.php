@@ -1,7 +1,7 @@
     <!-- Our Clients -->
     
     @empty(!$clients->toArray())
-        <section class="clients wow fadeInUpBig">
+        <section class="clients wow fadeInUpBig" id="clients">
             <div class="container">
                 <h2 class="section-title">{{ __('home.Our_Clients') }}</h2>
             </div>

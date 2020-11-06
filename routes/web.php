@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AchievementCategoryController;
 use App\Http\Controllers\Backend\AchievementController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ClientController;
@@ -110,6 +111,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
   Route::get('/achievement/{id}/edit', [AchievementController::class, 'edit'])->name('admin.achievement.edit');
   Route::delete('/achievement/{id}', [AchievementController::class, 'destroy'])->name('admin.achievement.destroy');
   //end Achievement
+
+  //Category
+  Route::get('/achievement/categories', [AchievementCategoryController::class, 'index'])->name('admin.achievements.category.index');
+  Route::get('achievement/category/datatable', [AchievementCategoryController::class, 'datatable'])->name('admin.achievements.category.datatable');
+  Route::get('achievement/category/create', [AchievementCategoryController::class, 'create'])->name('admin.achievements.category.create');
+  Route::post('achievement/category', [AchievementCategoryController::class, 'store'])->name('admin.achievements.category.store');
+  Route::put('achievement/category/{id}', [AchievementCategoryController::class, 'update'])->name('admin.achievements.category.update');
+  Route::get('achievement/category/{id}/edit', [AchievementCategoryController::class, 'edit'])->name('admin.achievements.category.edit');
+  Route::delete('achievement/category/{id}', [AchievementCategoryController::class, 'destroy'])->name('admin.achievements.category.destroy');
+  Route::put('achievement/category/services/update', [AchievementCategoryController::class, 'updateCategoryForServices'])->name('admin.achievements.category.services.update');
+  //end category
 
   //Testimon
   Route::get('/testimonies', [TestimonController::class, 'index'])->name('admin.testimon.index');
